@@ -33,8 +33,8 @@ class PointOfSales {
    */
   getService() {
     const grpc_promise = require('grpc-promise');
-    const { PointOfSalesPromiseClient } = require('./src/grpc/proto/point_of_sales_grpc_web_pb.js');
-    const requestService = new PointOfSalesPromiseClient(this.host);
+    const { PointOfSalesServicePromiseClient } = require('./src/grpc/proto/point_of_sales_grpc_web_pb.js');
+    const requestService = new PointOfSalesServicePromiseClient(this.host);
     grpc_promise.promisifyAll(requestService);
     //  Return request for get data
     return requestService;
@@ -83,7 +83,7 @@ class PointOfSales {
       request.setName(name);
     }
     if(priceListUuid) {
-      request.setPriceListuuid(priceListUuid);
+      request.setPricelistuuid(priceListUuid);
     }
     if(businessPartnerUuid) {
       request.setBusinesspartneruuid(businessPartnerUuid);
@@ -97,14 +97,13 @@ class PointOfSales {
     //
     return this.getService().getProductPrice(request)
     .then(productPriceResponse => {
-      console.log(productPriceResponse);
-      // if (isConvert) {
-      //   const { convertCountryFromGRPC } = require('./src/convertUtils');
-      //   return convertCountryFromGRPC({
-      //     countryToConvert: productPriceResponse,
-      //     formatToConvert
-      //   });
-      // }
+      if (isConvert) {
+        const { convertProductPriceFromGRPC } = require('./src/convertUtils');
+        return convertProductPriceFromGRPC({
+          productPriceToConvert: productPriceResponse,
+          formatToConvert
+        });
+      }
       return productPriceResponse;
     });
   }
