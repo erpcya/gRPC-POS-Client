@@ -18,11 +18,11 @@ ADempiere POS Client write in Javascript for gRPC service, use it for connect wi
 
 ``` bash
 # installing via NPM
-npm i @adempiere/grpc-data-client
+npm i @adempiere/grpc-pos-client
 ```
 ``` bash
 # installing via Yarn
-yarn add @adempiere/grpc-data-client
+yarn add @adempiere/grpc-pos-client
 ```
 
 ## A Example
@@ -69,13 +69,17 @@ For recreate stub class you must have follow:
 - Also you can see it: [gRPC-web](https://github.com/grpc/grpc-web)
 - [gRPC](https://grpc.io/docs/tutorials/basic/web.html)
 After installed it just go to source code folder an run it:
+
 ```Shell
 protoc proto/businessdata.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
 And run it for POS
+
+```Shell
 protoc proto/point_of_sales.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
+```
 The result is generated on: src/grpc folder
