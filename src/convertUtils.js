@@ -138,7 +138,11 @@ const convertUtils = {
         priceListName: productPriceToConvert.getPricelistname(),
         isTaxIncluded: productPriceToConvert.getIstaxincluded(),
         validFrom: productPriceToConvert.getValidfrom(),
-        pricePrecision: productPriceToConvert.getPriceprecision()
+        pricePrecision: productPriceToConvert.getPriceprecision(),
+        quantityOnHand: productPriceToConvert.getQuantityonhand(),
+        quantityReserved: productPriceToConvert.getQuantityreserved(),
+        quantityOrdered: productPriceToConvert.getQuantityordered(),
+        quantityAvailable: productPriceToConvert.getQuantityavailable()
       };
     }
     return {
@@ -151,7 +155,11 @@ const convertUtils = {
       priceListName: undefined,
       isTaxIncluded: undefined,
       validFrom: undefined,
-      pricePrecision: undefined
+      pricePrecision: undefined,
+      quantityOnHand: undefined,
+      quantityReserved: undefined,
+      quantityOrdered: undefined,
+      quantityAvailable: undefined
     };
   }
 }
