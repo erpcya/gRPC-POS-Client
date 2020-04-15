@@ -1,0 +1,38 @@
+{
+  "name": "@adempiere/grpc-pos-client",
+  "version": "2.2.1",
+  "description": "ADempiere POS Client write in Javascript for gRPC service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/erpcya/gRPC-POS-Client.git"
+  },
+  "author": "Yamel Senih",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/erpcya/gRPC-POS-Client/issues"
+  },
+  "homepage": "https://github.com/erpcya/gRPC-POS-Client#readme",
+  "dependencies": {
+    "google-protobuf": "^3.6.1",
+    "grpc": "^1.18.0",
+    "grpc-promise": "^1.4.0",
+    "grpc-web": "^1.0.3",
+    "xmlhttprequest": "^1.8.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "compiere",
+    "adempiere",
+    "erp",
+    "grpc",
+    "grpc-web",
+    "pos",
+    "java",
+    "web",
+    "data"
+  ]
+}
