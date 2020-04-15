@@ -1750,7 +1750,11 @@ proto.data.ProductPrice.toObject = function(includeInstance, msg) {
     validfrom: jspb.Message.getFieldWithDefault(msg, 7, 0),
     currency: (f = msg.getCurrency()) && proto_businessdata_pb.Currency.toObject(includeInstance, f),
     taxrate: (f = msg.getTaxrate()) && proto.data.TaxRate.toObject(includeInstance, f),
-    priceprecision: jspb.Message.getFieldWithDefault(msg, 10, 0)
+    priceprecision: jspb.Message.getFieldWithDefault(msg, 10, 0),
+    quantityonhand: (f = msg.getQuantityonhand()) && proto_businessdata_pb.Decimal.toObject(includeInstance, f),
+    quantityreserved: (f = msg.getQuantityreserved()) && proto_businessdata_pb.Decimal.toObject(includeInstance, f),
+    quantityordered: (f = msg.getQuantityordered()) && proto_businessdata_pb.Decimal.toObject(includeInstance, f),
+    quantityavailable: (f = msg.getQuantityavailable()) && proto_businessdata_pb.Decimal.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1832,6 +1836,26 @@ proto.data.ProductPrice.deserializeBinaryFromReader = function(msg, reader) {
     case 10:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPriceprecision(value);
+      break;
+    case 11:
+      var value = new proto_businessdata_pb.Decimal;
+      reader.readMessage(value,proto_businessdata_pb.Decimal.deserializeBinaryFromReader);
+      msg.setQuantityonhand(value);
+      break;
+    case 12:
+      var value = new proto_businessdata_pb.Decimal;
+      reader.readMessage(value,proto_businessdata_pb.Decimal.deserializeBinaryFromReader);
+      msg.setQuantityreserved(value);
+      break;
+    case 13:
+      var value = new proto_businessdata_pb.Decimal;
+      reader.readMessage(value,proto_businessdata_pb.Decimal.deserializeBinaryFromReader);
+      msg.setQuantityordered(value);
+      break;
+    case 14:
+      var value = new proto_businessdata_pb.Decimal;
+      reader.readMessage(value,proto_businessdata_pb.Decimal.deserializeBinaryFromReader);
+      msg.setQuantityavailable(value);
       break;
     default:
       reader.skipField();
@@ -1936,6 +1960,38 @@ proto.data.ProductPrice.serializeBinaryToWriter = function(message, writer) {
     writer.writeInt32(
       10,
       f
+    );
+  }
+  f = message.getQuantityonhand();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      proto_businessdata_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getQuantityreserved();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      proto_businessdata_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getQuantityordered();
+  if (f != null) {
+    writer.writeMessage(
+      13,
+      f,
+      proto_businessdata_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getQuantityavailable();
+  if (f != null) {
+    writer.writeMessage(
+      14,
+      f,
+      proto_businessdata_pb.Decimal.serializeBinaryToWriter
     );
   }
 };
@@ -2196,6 +2252,138 @@ proto.data.ProductPrice.prototype.getPriceprecision = function() {
 /** @param {number} value */
 proto.data.ProductPrice.prototype.setPriceprecision = function(value) {
   jspb.Message.setProto3IntField(this, 10, value);
+};
+
+
+/**
+ * optional Decimal quantityOnHand = 11;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ProductPrice.prototype.getQuantityonhand = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_businessdata_pb.Decimal, 11));
+};
+
+
+/** @param {?proto.data.Decimal|undefined} value */
+proto.data.ProductPrice.prototype.setQuantityonhand = function(value) {
+  jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.data.ProductPrice.prototype.clearQuantityonhand = function() {
+  this.setQuantityonhand(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ProductPrice.prototype.hasQuantityonhand = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional Decimal quantityReserved = 12;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ProductPrice.prototype.getQuantityreserved = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_businessdata_pb.Decimal, 12));
+};
+
+
+/** @param {?proto.data.Decimal|undefined} value */
+proto.data.ProductPrice.prototype.setQuantityreserved = function(value) {
+  jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.data.ProductPrice.prototype.clearQuantityreserved = function() {
+  this.setQuantityreserved(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ProductPrice.prototype.hasQuantityreserved = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional Decimal quantityOrdered = 13;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ProductPrice.prototype.getQuantityordered = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_businessdata_pb.Decimal, 13));
+};
+
+
+/** @param {?proto.data.Decimal|undefined} value */
+proto.data.ProductPrice.prototype.setQuantityordered = function(value) {
+  jspb.Message.setWrapperField(this, 13, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.data.ProductPrice.prototype.clearQuantityordered = function() {
+  this.setQuantityordered(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ProductPrice.prototype.hasQuantityordered = function() {
+  return jspb.Message.getField(this, 13) != null;
+};
+
+
+/**
+ * optional Decimal quantityAvailable = 14;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ProductPrice.prototype.getQuantityavailable = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_businessdata_pb.Decimal, 14));
+};
+
+
+/** @param {?proto.data.Decimal|undefined} value */
+proto.data.ProductPrice.prototype.setQuantityavailable = function(value) {
+  jspb.Message.setWrapperField(this, 14, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ */
+proto.data.ProductPrice.prototype.clearQuantityavailable = function() {
+  this.setQuantityavailable(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ProductPrice.prototype.hasQuantityavailable = function() {
+  return jspb.Message.getField(this, 14) != null;
 };
 
 

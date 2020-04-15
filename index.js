@@ -56,7 +56,7 @@ class PointOfSales {
    * @param {string}  formatToConvert
    * @return {object} Entity with records
    */
-  requestGetProductPrice({
+  getProductPrice({
     searchValue,
     upc,
     value,

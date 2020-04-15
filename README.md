@@ -28,38 +28,31 @@ yarn add @adempiere/grpc-pos-client
 ## A Example
 ### Declare POS
 ```javascript
-const POS = require('@adempiere/grpc-data-client');
+const POS = require('@adempiere/grpc-pos-client');
 let data = new POS(GRPC_HOST, 'Session UUID');
 ```
 ### Declare POS with specific language
 ```javascript
-const POS = require('@adempiere/grpc-data-client');
+const POS = require('@adempiere/grpc-pos-client');
 let data = new POS(GRPC_HOST, 'Session UUID', 'es_VE');
 ```
 
 ### Request a simple Object based on Table and UUID
 ```javascript
 //  Request a single Object
-data.getEntity('AD_Element', '8cc49692-fb40-11e8-a479-7a0060f0aa01')
-.then(valueObject => {
-  console.log("Object with single UUID");
+data.getProductPrice(searchValue: 'Patio Fun', priceListUuid: '8cc49692-fb40-11e8-a479-7a0060f0aa01')
+.then(productPrice => {
+  console.log("Product Price");
     //  Value
-  let map = valueObject.getValuesMap();
-  console.log("ColumnName: " + map.get("ColumnName").getStringvalue());
-  console.log("Name: " + map.get("Name").getStringvalue());
-  console.log("Display Type: " + map.get("AD_Reference_ID").getIntvalue());
-  console.log("Value Type: " + map.get("AD_Reference_ID").getValuetype());
+  console.log(productPrice);
 })
 .catch(err => console.log("Error: " + err.message));
 ```
 
 Output
 ```
-Object with single UUID
-ColumnName: HR_JobOpening_ID
-Name: Job Openings
-Display Type: 13
-Value Type: 0
+Product Price
+
 ```
 
 ## Recreate proto stub class (only for contribute to project)
