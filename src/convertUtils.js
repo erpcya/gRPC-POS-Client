@@ -15,140 +15,36 @@
  ************************************************************************************/
 
 const convertUtils = {
-  convertProductPriceFromGRPC({ productPriceToConvert, formatToConvert = 'object' }) {
+  convertDecimalValue(value) {
+    if (value) {
+      return Number(value.getDecimalvalue());
+    }
+    return undefined;
+  },
+
+  convertProductPriceFromGRPC(productPriceToConvert) {
     if (productPriceToConvert) {
-      var currency;
-      var taxRate;
-      var product;
-      //  Currency
-      if(productPriceToConvert.getCurrency()) {
-        currency = {
-          currencyId: productPriceToConvert.getCurrency().getId(),
-          currencyUuid: productPriceToConvert.getCurrency().getUuid(),
-          iSOCode: productPriceToConvert.getCurrency().getIsocode(),
-          curSymbol: productPriceToConvert.getCurrency().getCursymbol(),
-          description: productPriceToConvert.getCurrency().getDescription(),
-          stdPrecision: productPriceToConvert.getCurrency().getStdprecision(),
-          costingPrecision: productPriceToConvert.getCurrency().getCostingprecision()
-        }
-      } else {
-        currency = {
-          currencyId: undefined,
-          currencyUuid: undefined,
-          iSOCode: undefined,
-          curSymbol: undefined,
-          description: undefined,
-          stdPrecision: undefined,
-          costingPrecision: undefined
-        }
-      }
-      //  Tax rate
-      if(productPriceToConvert.getTaxrate()) {
-        taxRate = {
-          name: productPriceToConvert.getTaxrate().getName(),
-          description: productPriceToConvert.getTaxrate().getDescription(),
-          taxIndicator: productPriceToConvert.getTaxrate().getTaxindicator(),
-          rate: productPriceToConvert.getTaxrate().getRate()
-        }
-      } else {
-        taxRate = {
-          name: undefined,
-          description: undefined,
-          taxIndicator: undefined,
-          rate: undefined
-        }
-      }
-      //  Product
-      if(productPriceToConvert.getProduct()) {
-        product = {
-          uuid: productPriceToConvert.getProduct().getUuid(),
-          id: productPriceToConvert.getProduct().getId(),
-          value: productPriceToConvert.getProduct().getValue(),
-          name: productPriceToConvert.getProduct().getName(),
-          help: productPriceToConvert.getProduct().getHelp(),
-          documentNote: productPriceToConvert.getProduct().getDocumentnote(),
-          uomName: productPriceToConvert.getProduct().getUomname(),
-          productType: productPriceToConvert.getProduct().getProducttype(),
-          isStocked: productPriceToConvert.getProduct().getIsstocked(),
-          isDropShip: productPriceToConvert.getProduct().getIsdropship(),
-          isPurchased: productPriceToConvert.getProduct().getIspurchased(),
-          isSold: productPriceToConvert.getProduct().getIssold(),
-          imageURL: productPriceToConvert.getProduct().getImageurl(),
-          productCategoryName: productPriceToConvert.getProduct().getProductcategoryname(),
-          productGroupName: productPriceToConvert.getProduct().getProductgroupname(),
-          productClassName: productPriceToConvert.getProduct().getProductclassname(),
-          productClassificationName: productPriceToConvert.getProduct().getProductclassificationname(),
-          weight: productPriceToConvert.getProduct().getWeight(),
-          volume: productPriceToConvert.getProduct().getVolume(),
-          upc: productPriceToConvert.getProduct().getUpc(),
-          sku: productPriceToConvert.getProduct().getSku(),
-          shelfWidth: productPriceToConvert.getProduct().getShelfwidth(),
-          shelfHeight: productPriceToConvert.getProduct().getShelfheight(),
-          shelfDepth: productPriceToConvert.getProduct().getShelfdepth(),
-          unitsPerPack: productPriceToConvert.getProduct().getUnitsperpack(),
-          unitsPerPallet: productPriceToConvert.getProduct().getUnitsperpallet(),
-          guaranteeDays: productPriceToConvert.getProduct().getGuaranteedays(),
-          descriptionURL: productPriceToConvert.getProduct().getDescriptionurl(),
-          versionNo: productPriceToConvert.getProduct().getVersionno(),
-          taxCategory: productPriceToConvert.getProduct().getTaxcategory(),
-          description: productPriceToConvert.getProduct().getDescription()
-        }
-      } else {
-        product = {
-          uuid: undefined,
-          id: undefined,
-          value: undefined,
-          name: undefined,
-          help: undefined,
-          documentNote: undefined,
-          uomName: undefined,
-          productType: undefined,
-          isStocked: undefined,
-          isDropShip: undefined,
-          isPurchased: undefined,
-          isSold: undefined,
-          imageURL: undefined,
-          productCategoryName: undefined,
-          productGroupName: undefined,
-          productClassName: undefined,
-          productClassificationName: undefined,
-          weight: undefined,
-          volume: undefined,
-          upc: undefined,
-          sku: undefined,
-          shelfWidth: undefined,
-          shelfHeight: undefined,
-          shelfDepth: undefined,
-          unitsPerPack: undefined,
-          unitsPerPallet: undefined,
-          guaranteeDays: undefined,
-          descriptionURL: undefined,
-          versionNo: undefined,
-          taxCategory: undefined,
-          description: undefined
-        }
-      }
       return {
-        product: product,
-        currency: currency,
-        taxRate: taxRate,
-        priceList: productPriceToConvert.getPricelist(),
-        priceStd: productPriceToConvert.getPricestd(),
-        priceLimit: productPriceToConvert.getPricelimit(),
+        currency: convertUtils.convertCurrencyFromGRPC(productPriceToConvert.getCurrency()),
+        taxRate: convertUtils.convertTaxRateFromGRPC(productPriceToConvert.getTaxrate()),
+        product: convertUtils.convertProductFromGRPC(productPriceToConvert.getProduct()),
+        priceList: convertUtils.convertDecimalValue(productPriceToConvert.getPricelist()),
+        priceStd: convertUtils.convertDecimalValue(productPriceToConvert.getPricestd()),
+        priceLimit: convertUtils.convertDecimalValue(productPriceToConvert.getPricelimit()),
         priceListName: productPriceToConvert.getPricelistname(),
         isTaxIncluded: productPriceToConvert.getIstaxincluded(),
         validFrom: productPriceToConvert.getValidfrom(),
         pricePrecision: productPriceToConvert.getPriceprecision(),
-        quantityOnHand: productPriceToConvert.getQuantityonhand(),
-        quantityReserved: productPriceToConvert.getQuantityreserved(),
-        quantityOrdered: productPriceToConvert.getQuantityordered(),
-        quantityAvailable: productPriceToConvert.getQuantityavailable()
+        quantityOnHand: convertUtils.convertDecimalValue(productPriceToConvert.getQuantityonhand()),
+        quantityReserved: convertUtils.convertDecimalValue(productPriceToConvert.getQuantityreserved()),
+        quantityOrdered: convertUtils.convertDecimalValue(productPriceToConvert.getQuantityordered()),
+        quantityAvailable: convertUtils.convertDecimalValue(productPriceToConvert.getQuantityavailable())
       };
     }
     return {
-      product: product,
-      currency: currency,
-      taxRate: taxRate,
+      product: undefined,
+      currency: undefined,
+      taxRate: undefined,
       priceList: undefined,
       priceStd: undefined,
       priceLimit: undefined,
@@ -161,7 +57,119 @@ const convertUtils = {
       quantityOrdered: undefined,
       quantityAvailable: undefined
     };
+  },
+
+  convertCurrencyFromGRPC(currencyToConvert) {
+    if(currencyToConvert) {
+      return {
+        currencyId: currencyToConvert.getId(),
+        currencyUuid: currencyToConvert.getUuid(),
+        iSOCode: currencyToConvert.getIsocode(),
+        curSymbol: currencyToConvert.getCursymbol(),
+        description: currencyToConvert.getDescription(),
+        stdPrecision: currencyToConvert.getStdprecision(),
+        costingPrecision: currencyToConvert.getCostingprecision()
+      };
+    }
+    return {
+      currencyId: undefined,
+      currencyUuid: undefined,
+      iSOCode: undefined,
+      curSymbol: undefined,
+      description: undefined,
+      stdPrecision: undefined,
+      costingPrecision: undefined
+    };
+  },
+
+  convertTaxRateFromGRPC(taxRateToConvert) {
+    //  Tax rate
+    if (taxRateToConvert) {
+      return {
+        name: taxRateToConvert.getName(),
+        description: taxRateToConvert.getDescription(),
+        taxIndicator: taxRateToConvert.getTaxindicator(),
+        rate: convertUtils.convertDecimalValue(taxRateToConvert.getRate())
+      };
+    }
+    return {
+      name: undefined,
+      description: undefined,
+      taxIndicator: undefined,
+      rate: undefined
+    };
+  },
+
+  convertProductFromGRPC(productToConvert) {
+    if (productToConvert) {
+      return {
+        uuid: productToConvert.getUuid(),
+        id: productToConvert.getId(),
+        value: productToConvert.getValue(),
+        name: productToConvert.getName(),
+        help: productToConvert.getHelp(),
+        documentNote: productToConvert.getDocumentnote(),
+        uomName: productToConvert.getUomname(),
+        productType: productToConvert.getProducttype(),
+        isStocked: productToConvert.getIsstocked(),
+        isDropShip: productToConvert.getIsdropship(),
+        isPurchased: productToConvert.getIspurchased(),
+        isSold: productToConvert.getIssold(),
+        imageURL: productToConvert.getImageurl(),
+        productCategoryName: productToConvert.getProductcategoryname(),
+        productGroupName: productToConvert.getProductgroupname(),
+        productClassName: productToConvert.getProductclassname(),
+        productClassificationName: productToConvert.getProductclassificationname(),
+        weight: convertUtils.convertDecimalValue(productToConvert.getWeight()),
+        volume: convertUtils.convertDecimalValue(productToConvert.getVolume()),
+        upc: productToConvert.getUpc(),
+        sku: productToConvert.getSku(),
+        shelfWidth: productToConvert.getShelfwidth(),
+        shelfHeight: convertUtils.convertDecimalValue(productToConvert.getShelfheight()),
+        shelfDepth: productToConvert.getShelfdepth(),
+        unitsPerPack: productToConvert.getUnitsperpack(),
+        unitsPerPallet: convertUtils.convertDecimalValue(productToConvert.getUnitsperpallet()),
+        guaranteeDays: productToConvert.getGuaranteedays(),
+        descriptionURL: productToConvert.getDescriptionurl(),
+        versionNo: productToConvert.getVersionno(),
+        taxCategory: productToConvert.getTaxcategory(),
+        description: productToConvert.getDescription()
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      value: undefined,
+      name: undefined,
+      help: undefined,
+      documentNote: undefined,
+      uomName: undefined,
+      productType: undefined,
+      isStocked: undefined,
+      isDropShip: undefined,
+      isPurchased: undefined,
+      isSold: undefined,
+      imageURL: undefined,
+      productCategoryName: undefined,
+      productGroupName: undefined,
+      productClassName: undefined,
+      productClassificationName: undefined,
+      weight: undefined,
+      volume: undefined,
+      upc: undefined,
+      sku: undefined,
+      shelfWidth: undefined,
+      shelfHeight: undefined,
+      shelfDepth: undefined,
+      unitsPerPack: undefined,
+      unitsPerPallet: undefined,
+      guaranteeDays: undefined,
+      descriptionURL: undefined,
+      versionNo: undefined,
+      taxCategory: undefined,
+      description: undefined
+    };
   }
 }
 
-  module.exports = convertUtils
+module.exports = convertUtils
