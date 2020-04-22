@@ -19,12 +19,22 @@ class PointOfSales {
    * Constructor, No authentication required
    * @param {string} host
    * @param {string} sessionUuid
+   * @param {string} organizationUuid
+   * @param {string} warehouseUuid
    * @param {string} language Languaje i18n
    */
-  constructor(host, sessionUuid, language = 'en_US') {
+  constructor({
+    host,
+    sessionUuid,
+    organizationUuid,
+    warehouseUuid,
+    language = 'en_US',
+  }) {
     this.sessionUuid = sessionUuid;
     this.host = host;
     this.language = language;
+    this.organizationUuid = organizationUuid;
+    this.warehouseUuid = warehouseUuid;
   }
 
   /**
@@ -45,6 +55,8 @@ class PointOfSales {
     const clientRequest = new ClientRequest();
     clientRequest.setSessionuuid(this.sessionUuid);
     clientRequest.setLanguage(this.language);
+    clientRequest.setOrganizationuuid(this.organizationUuid);
+    clientRequest.setWarehouseuuid(this.warehouseUuid);
     return clientRequest;
   }
 
