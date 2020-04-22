@@ -111,10 +111,7 @@ class PointOfSales {
     .then(productPriceResponse => {
       if (isConvert) {
         const { convertProductPriceFromGRPC } = require('./src/convertUtils');
-        return convertProductPriceFromGRPC({
-          productPriceToConvert: productPriceResponse,
-          formatToConvert
-        });
+        return convertProductPriceFromGRPC(productPriceResponse);
       }
       return productPriceResponse;
     });
