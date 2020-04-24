@@ -8921,11 +8921,12 @@ proto.data.Value.serializeBinaryToWriter = function(message, writer) {
  * @enum {number}
  */
 proto.data.Value.ValueType = {
-  INTEGER: 0,
-  DECIMAL: 1,
-  BOOLEAN: 2,
-  STRING: 3,
-  DATE: 4
+  UNKNOWN: 0,
+  INTEGER: 1,
+  DECIMAL: 2,
+  BOOLEAN: 3,
+  STRING: 4,
+  DATE: 5
 };
 
 /**
