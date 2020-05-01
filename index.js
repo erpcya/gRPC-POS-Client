@@ -43,15 +43,15 @@ class PointOfSales {
    */
   getService() {
     const grpc_promise = require('grpc-promise');
-    const { PointOfSalesServicePromiseClient } = require('./src/grpc/proto/point_of_sales_grpc_web_pb.js');
-    const requestService = new PointOfSalesServicePromiseClient(this.host);
+    const { StorePromiseClient } = require('./src/grpc/proto/point_of_sales_grpc_web_pb.js');
+    const requestService = new StorePromiseClient(this.host);
     grpc_promise.promisifyAll(requestService);
     //  Return request for get data
     return requestService;
   }
 
   getClientRequest() {
-    const { ClientRequest } = require('./src/grpc/proto/businessdata_pb.js');
+    const { ClientRequest } = require('./src/grpc/proto/core_functionality_pb.js');
     const clientRequest = new ClientRequest();
     clientRequest.setSessionuuid(this.sessionUuid);
     clientRequest.setLanguage(this.language);
