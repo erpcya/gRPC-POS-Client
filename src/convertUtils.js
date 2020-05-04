@@ -169,6 +169,151 @@ const convertUtils = {
       taxCategory: undefined,
       description: undefined
     };
+  },
+
+  convertPointOfSalesFromGRPC(pointOfSalesToConvert) {
+    if (pointOfSalesToConvert) {
+      return {
+        uuid: pointOfSalesToConvert.getUuid(),
+        id: pointOfSalesToConvert.getId(),
+        name: pointOfSalesToConvert.getName(),
+        description: pointOfSalesToConvert.getDescription(),
+        help: pointOfSalesToConvert.getHelp(),
+        isModifyPrice: pointOfSalesToConvert.getIsmodifyprice(),
+        isPOSRequiredPIN: pointOfSalesToConvert.getIsposrequirepin(),
+        salesRepresentative: convertUtils.convertSalesRepresentativeFromGRPC(
+          pointOfSalesToConvert.getSalesrepresentative()
+        ),
+        templateBusinessPartner: convertUtils.convertBusinessPartnerFromGRPC(
+          pointOfSalesToConvert.getTemplatebusinesspartner()
+        )
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      name: undefined,
+      description: undefined,
+      help: undefined,
+      isModifyPrice: undefined,
+      isPOSRequiredPIN: undefined,
+      salesRepresentative: undefined,
+      templateBusinessPartner: undefined
+    };
+  },
+
+  convertSalesRepresentativeFromGRPC(salesRepresentativeToConvert) {
+    if (salesRepresentativeToConvert) {
+      return {
+        uuid: salesRepresentativeToConvert.getUuid(),
+        id: salesRepresentativeToConvert.getId(),
+        name: salesRepresentativeToConvert.getName(),
+        description: salesRepresentativeToConvert.getDescription()
+      }
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      name: undefined,
+      description: undefined
+    }
+  },
+
+  // Business Partner
+  convertBusinessPartnerFromGRPC(businessPartnerToConvert) {
+    if (businessPartnerToConvert) {
+      return {
+        uuid: businessPartnerToConvert.getUuid(),
+        id: businessPartnerToConvert.getId(),
+        value: businessPartnerToConvert.getValue(),
+        taxId: businessPartnerToConvert.getTaxid(),
+        duns: businessPartnerToConvert.getDuns(),
+        naics: businessPartnerToConvert.getNaics(),
+        name: businessPartnerToConvert.getName(),
+        lastName: businessPartnerToConvert.getLastname(),
+        description: businessPartnerToConvert.getDescription()
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      value: undefined,
+      taxId: undefined,
+      duns: undefined,
+      naics: undefined,
+      name: undefined,
+      lastName: undefined,
+      description: undefined
+    };
+  },
+
+  convertDocumentTypeFromGRPC(documentTypeToConvert) {
+    if (documentTypeToConvert) {
+      return {
+        uuid: documentTypeToConvert.getUuid(),
+        id: documentTypeToConvert.getId(),
+        name: documentTypeToConvert.getName(),
+        printerName: documentTypeToConvert.getPrintername(),
+        description: documentTypeToConvert.getDescription()
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      name: undefined,
+      printerName: undefined,
+      description: undefined
+    };
+  },
+
+  convertDocumentStatusFromGRPC(documentStatusToConvert) {
+    if (documentStatusToConvert) {
+      return {
+        value: documentStatusToConvert.getValue(),
+        name: documentStatusToConvert.getName(),
+        description: documentStatusToConvert.getDescription()
+      };
+    }
+    return {
+      value: undefined,
+      name: undefined,
+      description: undefined
+    };
+  },
+
+  convertOrderFromGRPC(orderToConvert) {
+    if (orderToConvert) {
+      return {
+        uuid: orderToConvert.getUuid(),
+        id: orderToConvert.getId(),
+        documentNo: orderToConvert.getDocumentno(),
+        documentType: convertUtils.convertDocumentTypeFromGRPC(
+          orderToConvert.getDocumenttype(),
+        ),
+        salesRepresentative: convertUtils(
+          orderToConvert.getSalesrepresentative()
+        ),
+        documentStatus: convertUtils.convertDocumentStatusFromGRPC(
+          orderToConvert.getDocumentstatus()
+        ),
+        totalLines: convertUtils.convertDecimalValue(
+          orderToConvert.getTotallines()
+        ),
+        grandTotal: convertUtils.convertDecimalValue(
+          orderToConvert.getGrandtotal()
+        )
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      documentNo: undefined,
+      documentType: undefined,
+      salesRepresentative: undefined,
+      documentStatus: undefined,
+      totalLines: undefined,
+      grandTotal: undefined
+    };
   }
 }
 

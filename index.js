@@ -61,12 +61,64 @@ class PointOfSales {
   }
 
   /**
-   * Get Country Information
-   * @param {string} countryUuid, Universally Unique IDentifier from country
-   * @param {number} countryId, IDentifier from country
-   * @param {boolean} isConvert
-   * @param {string}  formatToConvert
-   * @return {object} Entity with records
+   * Get Point Of Sales Definition
+   */
+  getPointOfSales({
+    pointOfSalesUuid,
+    isConvert = true
+  }) {
+    const { PointOfSalesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new PointOfSalesRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setPointofsalesuuid(pointOfSalesUuid);
+    //
+    return this.getService().getPointOfSales(request)
+    .then(pontOfSalesResponse => {
+      if (isConvert) {
+        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+        return convertPointOfSalesFromGRPC(posItem);
+      }
+      return pontOfSalesResponse;
+    });
+  }
+
+  /**
+   * Get List Point Of Sales
+   */
+  listPointOfSales({
+    userUuid,
+    pageSize,
+    pageToken,
+    isConvert = true
+  }) {
+    const { ListPointOfSalesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new ListPointOfSalesRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setUseruuid(userUuid);
+    request.setPageSize(pageSize);
+    request.setPageToken(pageToken);
+    //
+    return this.getService().listPointOfSales(request)
+    .then(pontOfSalesResponse => {
+      if (isConvert) {
+        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+
+        return {
+          recordCount: pontOfSalesResponse.getRecordcount(),
+          sellingPointsList: pontOfSalesResponse.getSellingpointsList().map(posItem => {
+            return convertPointOfSalesFromGRPC(posItem);
+          }),
+          nextPageToken: pontOfSalesResponse.getNextPageToken()
+        };
+      }
+      return pontOfSalesResponse;
+    });
+  }
+
+  /**
+   * Get Product Price
    */
   getProductPrice({
     searchValue,
@@ -77,35 +129,20 @@ class PointOfSales {
     businessPartnerUuid,
     warehouseUuid,
     validFrom,
-    isConvert = true,
-    formatToConvert = 'object' }) {
+    isConvert = true
+  }) {
     const { GetProductPriceRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new GetProductPriceRequest();
+
     request.setClientrequest(this.getClientRequest());
-    if(searchValue) {
-      request.setSearchvalue(searchValue);
-    }
-    if(upc) {
-      request.setUpc(upc);
-    }
-    if(value) {
-      request.setValue(value);
-    }
-    if(name) {
-      request.setName(name);
-    }
-    if(priceListUuid) {
-      request.setPricelistuuid(priceListUuid);
-    }
-    if(businessPartnerUuid) {
-      request.setBusinesspartneruuid(businessPartnerUuid);
-    }
-    if(warehouseUuid) {
-      request.setWarehouseuuid(warehouseUuid);
-    }
-    if(validFrom) {
-      request.setValidfrom(validFrom);
-    }
+    request.setSearchvalue(searchValue);
+    request.setUpc(upc);
+    request.setValue(value);
+    request.setName(name);
+    request.setPricelistuuid(priceListUuid);
+    request.setBusinesspartneruuid(businessPartnerUuid);
+    request.setWarehouseuuid(warehouseUuid);
+    request.setValidfrom(validFrom);
     //
     return this.getService().getProductPrice(request)
     .then(productPriceResponse => {
@@ -116,6 +153,117 @@ class PointOfSales {
       return productPriceResponse;
     });
   }
+
+  createOrder({
+    posUuid,
+    customerUuid,
+    documentTypeUuid,
+    isConvert = true
+  }) {
+    const { CreateOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new CreateOrderRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setPosuuid(posUuid);
+    request.setCustomeruuid(customerUuid);
+    request.setDocumenttypeuuid(documentTypeUuid);
+
+    return this.getService().createOrder(request)
+      .then(createOrderResponse => {
+        if (isConvert) {
+          const { convertOrderFromGRPC } = require('./src/convertUtils');
+          return convertOrderFromGRPC(createOrderResponse);
+        }
+        return createOrderResponse;
+      });
+  }
+
+  deleteOrder({
+    orderUuid
+  }) {
+    const { DeleteOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new DeleteOrderRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderuuid(orderUuid);
+
+    return this.getService().deleteOrder(request);
+  }
+
+  createOrderLine({
+    orderUuid,
+    productUuid,
+    chargeUuid,
+    description,
+    quantity,
+    price,
+    discountRate,
+    warehouseUuid,
+    isConvert = true
+  }) {
+    const { CreateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new CreateOrderLineRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderuuid(orderUuid);
+    request.setProductuuid(productUuid);
+    request.setChargeuuid(chargeUuid);
+    request.setDescription(description);
+    request.setQuantity(quantity);
+    request.setPrice(price);
+    request.setDiscountrate(discountRate);
+    request.setWarehouseuuid(warehouseUuid);
+
+    return this.getService().createOrderLine(request)
+      .then(createOrderLineResponse => {
+        if (isConvert) {
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+          return convertOrderLineFromGRPC(createOrderLineResponse);
+        }
+        return createOrderLineResponse;
+      });
+  }
+
+  deleteOrderLine({
+    orderLineUuid
+  }) {
+    const { DeleteOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new DeleteOrderLineRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderlineuuid(orderLineUuid);
+
+    return this.getService().deleteOrderLine(request);
+  }
+
+  updateOrderLine({
+    orderLineUuid,
+    description,
+    quantity,
+    price,
+    discountRate,
+    isConvert = true
+  }) {
+    const { UpdateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new UpdateOrderLineRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderuuid(orderLineUuid);
+    request.setDescription(description);
+    request.setQuantity(quantity);
+    request.setPrice(price);
+    request.setDiscountrate(discountRate);
+
+    return this.getService().updateOrderLine(request)
+      .then(updateOrderLineResponse => {
+        if (isConvert) {
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+          return convertOrderLineFromGRPC(updateOrderLineResponse);
+        }
+        return updateOrderLineResponse;
+      });
+  }
+
 }
 
 module.exports = PointOfSales;
