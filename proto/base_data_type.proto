@@ -23,7 +23,7 @@ package data;
 
 //  Empty message
 message Empty {
-	
+
 }
 
 //	BusinessProcess Selections
@@ -211,7 +211,7 @@ message RecordLog {
 	}
 	EventType eventType = 8;
 	int64 logDate = 9;
-	repeated ChangeLog changeLogs = 10; 
+	repeated ChangeLog changeLogs = 10;
 }
 
 // Record Log

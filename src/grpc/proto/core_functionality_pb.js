@@ -4364,9 +4364,13 @@ proto.data.BusinessPartner.toObject = function(includeInstance, msg) {
   var f, obj = {
     uuid: jspb.Message.getFieldWithDefault(msg, 1, ""),
     id: jspb.Message.getFieldWithDefault(msg, 2, 0),
-    name: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    lastname: jspb.Message.getFieldWithDefault(msg, 4, ""),
-    description: jspb.Message.getFieldWithDefault(msg, 5, "")
+    value: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    taxid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    duns: jspb.Message.getFieldWithDefault(msg, 5, ""),
+    naics: jspb.Message.getFieldWithDefault(msg, 6, ""),
+    name: jspb.Message.getFieldWithDefault(msg, 7, ""),
+    lastname: jspb.Message.getFieldWithDefault(msg, 8, ""),
+    description: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -4413,13 +4417,29 @@ proto.data.BusinessPartner.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 3:
       var value = /** @type {string} */ (reader.readString());
-      msg.setName(value);
+      msg.setValue(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setLastname(value);
+      msg.setTaxid(value);
       break;
     case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDuns(value);
+      break;
+    case 6:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setNaics(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setName(value);
+      break;
+    case 8:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setLastname(value);
+      break;
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setDescription(value);
       break;
@@ -4466,24 +4486,52 @@ proto.data.BusinessPartner.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
-  f = message.getName();
+  f = message.getValue();
   if (f.length > 0) {
     writer.writeString(
       3,
       f
     );
   }
-  f = message.getLastname();
+  f = message.getTaxid();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getDescription();
+  f = message.getDuns();
   if (f.length > 0) {
     writer.writeString(
       5,
+      f
+    );
+  }
+  f = message.getNaics();
+  if (f.length > 0) {
+    writer.writeString(
+      6,
+      f
+    );
+  }
+  f = message.getName();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
+      f
+    );
+  }
+  f = message.getLastname();
+  if (f.length > 0) {
+    writer.writeString(
+      8,
+      f
+    );
+  }
+  f = message.getDescription();
+  if (f.length > 0) {
+    writer.writeString(
+      9,
       f
     );
   }
@@ -4521,47 +4569,107 @@ proto.data.BusinessPartner.prototype.setId = function(value) {
 
 
 /**
- * optional string name = 3;
+ * optional string value = 3;
  * @return {string}
  */
-proto.data.BusinessPartner.prototype.getName = function() {
+proto.data.BusinessPartner.prototype.getValue = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
 };
 
 
 /** @param {string} value */
-proto.data.BusinessPartner.prototype.setName = function(value) {
+proto.data.BusinessPartner.prototype.setValue = function(value) {
   jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
 /**
- * optional string lastName = 4;
+ * optional string taxId = 4;
  * @return {string}
  */
-proto.data.BusinessPartner.prototype.getLastname = function() {
+proto.data.BusinessPartner.prototype.getTaxid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
 
 /** @param {string} value */
-proto.data.BusinessPartner.prototype.setLastname = function(value) {
+proto.data.BusinessPartner.prototype.setTaxid = function(value) {
   jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional string description = 5;
+ * optional string duns = 5;
  * @return {string}
  */
-proto.data.BusinessPartner.prototype.getDescription = function() {
+proto.data.BusinessPartner.prototype.getDuns = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
 };
 
 
 /** @param {string} value */
-proto.data.BusinessPartner.prototype.setDescription = function(value) {
+proto.data.BusinessPartner.prototype.setDuns = function(value) {
   jspb.Message.setProto3StringField(this, 5, value);
+};
+
+
+/**
+ * optional string naics = 6;
+ * @return {string}
+ */
+proto.data.BusinessPartner.prototype.getNaics = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 6, ""));
+};
+
+
+/** @param {string} value */
+proto.data.BusinessPartner.prototype.setNaics = function(value) {
+  jspb.Message.setProto3StringField(this, 6, value);
+};
+
+
+/**
+ * optional string name = 7;
+ * @return {string}
+ */
+proto.data.BusinessPartner.prototype.getName = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/** @param {string} value */
+proto.data.BusinessPartner.prototype.setName = function(value) {
+  jspb.Message.setProto3StringField(this, 7, value);
+};
+
+
+/**
+ * optional string lastName = 8;
+ * @return {string}
+ */
+proto.data.BusinessPartner.prototype.getLastname = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+};
+
+
+/** @param {string} value */
+proto.data.BusinessPartner.prototype.setLastname = function(value) {
+  jspb.Message.setProto3StringField(this, 8, value);
+};
+
+
+/**
+ * optional string description = 9;
+ * @return {string}
+ */
+proto.data.BusinessPartner.prototype.getDescription = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
+};
+
+
+/** @param {string} value */
+proto.data.BusinessPartner.prototype.setDescription = function(value) {
+  jspb.Message.setProto3StringField(this, 9, value);
 };
 
 

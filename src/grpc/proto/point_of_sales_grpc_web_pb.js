@@ -258,6 +258,61 @@ proto.data.StorePromiseClient.prototype.getProductPrice =
 /**
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.ListProductPriceRequest,
+ *   !proto.data.ListProductPriceResponse>}
+ */
+const methodInfo_Store_ListProductPrice = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.ListProductPriceResponse,
+  /** @param {!proto.data.ListProductPriceRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListProductPriceResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.ListProductPriceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.ListProductPriceResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.ListProductPriceResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.StoreClient.prototype.listProductPrice =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.Store/ListProductPrice',
+      request,
+      metadata || {},
+      methodInfo_Store_ListProductPrice,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.ListProductPriceRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.ListProductPriceResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.data.StorePromiseClient.prototype.listProductPrice =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.Store/ListProductPrice',
+      request,
+      metadata || {},
+      methodInfo_Store_ListProductPrice);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.data.CreateOrderRequest,
  *   !proto.data.Order>}
  */
@@ -424,15 +479,15 @@ proto.data.StorePromiseClient.prototype.createOrderLine =
  * @const
  * @type {!grpc.web.AbstractClientBase.MethodInfo<
  *   !proto.data.DeleteOrderLineRequest,
- *   !proto.data.OrderLine>}
+ *   !proto.data.Empty>}
  */
 const methodInfo_Store_DeleteOrderLine = new grpc.web.AbstractClientBase.MethodInfo(
-  proto.data.OrderLine,
+  proto_base_data_type_pb.Empty,
   /** @param {!proto.data.DeleteOrderLineRequest} request */
   function(request) {
     return request.serializeBinary();
   },
-  proto.data.OrderLine.deserializeBinary
+  proto_base_data_type_pb.Empty.deserializeBinary
 );
 
 
@@ -441,9 +496,9 @@ const methodInfo_Store_DeleteOrderLine = new grpc.web.AbstractClientBase.MethodI
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @param {function(?grpc.web.Error, ?proto.data.OrderLine)}
+ * @param {function(?grpc.web.Error, ?proto.data.Empty)}
  *     callback The callback function(error, response)
- * @return {!grpc.web.ClientReadableStream<!proto.data.OrderLine>|undefined}
+ * @return {!grpc.web.ClientReadableStream<!proto.data.Empty>|undefined}
  *     The XHR Node Readable Stream
  */
 proto.data.StoreClient.prototype.deleteOrderLine =
@@ -462,7 +517,7 @@ proto.data.StoreClient.prototype.deleteOrderLine =
  *     request proto
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
- * @return {!Promise<!proto.data.OrderLine>}
+ * @return {!Promise<!proto.data.Empty>}
  *     A native promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.deleteOrderLine =
