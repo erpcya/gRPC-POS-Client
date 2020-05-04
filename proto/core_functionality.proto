@@ -185,7 +185,6 @@ message BusinessPartner {
 	string name = 7;
 	string lastName = 8;
 	string description = 9;
-
 }
 
 // Document Type definition
