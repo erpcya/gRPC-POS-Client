@@ -180,7 +180,7 @@ const convertUtils = {
         description: pointOfSalesToConvert.getDescription(),
         help: pointOfSalesToConvert.getHelp(),
         isModifyPrice: pointOfSalesToConvert.getIsmodifyprice(),
-        isPOSRequiredPIN: pointOfSalesToConvert.getIsposrequirepin(),
+        isPOSRequiredPIN: pointOfSalesToConvert.getIsposrequiredpin(),
         salesRepresentative: convertUtils.convertSalesRepresentativeFromGRPC(
           pointOfSalesToConvert.getSalesrepresentative()
         ),
