@@ -171,6 +171,23 @@ const convertUtils = {
     };
   },
 
+  convertChargeFromGRPC(chargeToConvert) {
+    if (chargeToConvert) {
+      return {
+        uuid: chargeToConvert.getUuid(),
+        id: chargeToConvert.getId(),
+        name: chargeToConvert.getName(),
+        description: chargeToConvert.getDescription()
+      };
+    }
+    return {
+      uuid: undefined,
+      id: undefined,
+      name: undefined,
+      description: undefined
+    };
+  },
+
   convertPointOfSalesFromGRPC(pointOfSalesToConvert) {
     if (pointOfSalesToConvert) {
       return {
@@ -276,6 +293,57 @@ const convertUtils = {
     }
     return {
       value: undefined,
+      name: undefined,
+      description: undefined
+    };
+  },
+
+  convertOrderLineFromGRPC(orderLineToConvert) {
+    if (orderLineToConvert) {
+      return {
+        uuid: orderLineToConvert.getUuid(),
+        orderUuid: orderLineToConvert.getOrderuuid(),
+        line: orderLineToConvert.getLine(),
+        product: convertUtils.convertProductFromGRPC(orderLineToConvert.getProduct()),
+        charge: convertUtils.convertChargeFromGRPC(orderLineToConvert.getCharge()),
+        description: orderLineToConvert.getDescription(),
+        lineDescription: orderLineToConvert.getLinedescription(),
+        quantity: convertUtils.convertDecimalValue(orderLineToConvert.getQuantity()),
+        price: convertUtils.convertDecimalValue(orderLineToConvert.getPrice()),
+        discountRate: convertUtils.convertDecimalValue(orderLineToConvert.getDiscountrate()),
+        lineNetAmount: convertUtils.convertDecimalValue(orderLineToConvert.getLinenetamount()),
+        taxRate: convertUtils.convertTaxRateFromGRPC(orderLineToConvert.getTaxrate()),
+        warehouse: convertUtils.convertWarehouseFromGRPC(orderLineToConvert.getWarehouse())
+      };
+    }
+    return {
+      uuid: undefined,
+      orderUuid: undefined,
+      line: undefined,
+      product: undefined,
+      description: undefined,
+      lineDescription: undefined,
+      quantity: undefined,
+      price: undefined,
+      discountRate: undefined,
+      lineNetAmount: undefined,
+      taxRate: undefined,
+      warehouse: undefined
+    };
+  },
+
+  convertWarehouseFromGRPC(warehouseToConvert) {
+    if (warehouseToConvert) {
+      return {
+        id: warehouseToConvert.getId(),
+        uuid: warehouseToConvert.getUuid(),
+        name: warehouseToConvert.getName(),
+        description: warehouseToConvert.getDescription()
+      };
+    }
+    return {
+      id: undefined,
+      uuid: undefined,
       name: undefined,
       description: undefined
     };
