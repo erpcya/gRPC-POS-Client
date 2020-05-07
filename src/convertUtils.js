@@ -290,7 +290,7 @@ const convertUtils = {
         documentType: convertUtils.convertDocumentTypeFromGRPC(
           orderToConvert.getDocumenttype(),
         ),
-        salesRepresentative: convertUtils(
+        salesRepresentative: convertUtils.convertSalesRepresentativeFromGRPC(
           orderToConvert.getSalesrepresentative()
         ),
         documentStatus: convertUtils.convertDocumentStatusFromGRPC(
