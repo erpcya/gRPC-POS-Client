@@ -585,5 +585,60 @@ proto.data.StorePromiseClient.prototype.updateOrderLine =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.GetOrderRequest,
+ *   !proto.data.Order>}
+ */
+const methodInfo_Store_GetOrder = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.Order,
+  /** @param {!proto.data.GetOrderRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.Order.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.GetOrderRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.Order)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.Order>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.StoreClient.prototype.getOrder =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.Store/GetOrder',
+      request,
+      metadata || {},
+      methodInfo_Store_GetOrder,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.GetOrderRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.Order>}
+ *     A native promise that resolves to the response
+ */
+proto.data.StorePromiseClient.prototype.getOrder =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.Store/GetOrder',
+      request,
+      metadata || {},
+      methodInfo_Store_GetOrder);
+};
+
+
 module.exports = proto.data;
 

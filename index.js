@@ -178,6 +178,25 @@ class PointOfSales {
       });
   }
 
+  getOrder(orderUuid) {
+    const { GetOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new GetOrderRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setPosuuid(posUuid);
+    request.setCustomeruuid(customerUuid);
+    request.setDocumenttypeuuid(documentTypeUuid);
+
+    return this.getService().getOrder(request)
+      .then(order => {
+        if (isConvert) {
+          const { convertOrderFromGRPC } = require('./src/convertUtils');
+          return convertOrderFromGRPC(order);
+        }
+        return order;
+      });
+  }
+
   deleteOrder({
     orderUuid
   }) {
