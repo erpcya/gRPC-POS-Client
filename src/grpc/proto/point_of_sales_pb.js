@@ -3997,7 +3997,7 @@ proto.data.Order.toObject = function(includeInstance, msg) {
     documentstatus: (f = msg.getDocumentstatus()) && proto_base_data_type_pb.DocumentStatus.toObject(includeInstance, f),
     totallines: (f = msg.getTotallines()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
     grandtotal: (f = msg.getGrandtotal()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
-    dateorder: jspb.Message.getFieldWithDefault(msg, 9, 0)
+    dateordered: jspb.Message.getFieldWithDefault(msg, 9, 0)
   };
 
   if (includeInstance) {
@@ -4073,7 +4073,7 @@ proto.data.Order.deserializeBinaryFromReader = function(msg, reader) {
       break;
     case 9:
       var value = /** @type {number} */ (reader.readInt64());
-      msg.setDateorder(value);
+      msg.setDateordered(value);
       break;
     default:
       reader.skipField();
@@ -4165,7 +4165,7 @@ proto.data.Order.serializeBinaryToWriter = function(message, writer) {
       proto_base_data_type_pb.Decimal.serializeBinaryToWriter
     );
   }
-  f = message.getDateorder();
+  f = message.getDateordered();
   if (f !== 0) {
     writer.writeInt64(
       9,
@@ -4386,16 +4386,16 @@ proto.data.Order.prototype.hasGrandtotal = function() {
 
 
 /**
- * optional int64 dateOrder = 9;
+ * optional int64 dateOrdered = 9;
  * @return {number}
  */
-proto.data.Order.prototype.getDateorder = function() {
+proto.data.Order.prototype.getDateordered = function() {
   return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 9, 0));
 };
 
 
 /** @param {number} value */
-proto.data.Order.prototype.setDateorder = function(value) {
+proto.data.Order.prototype.setDateordered = function(value) {
   jspb.Message.setProto3IntField(this, 9, value);
 };
 
