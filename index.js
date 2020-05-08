@@ -178,15 +178,15 @@ class PointOfSales {
       });
   }
 
-  getOrder(orderUuid) {
+  getOrder({
+    orderUuid,
+    isConvert = true
+  }) {
     const { GetOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new GetOrderRequest();
 
     request.setClientrequest(this.getClientRequest());
-    request.setPosuuid(posUuid);
-    request.setCustomeruuid(customerUuid);
-    request.setDocumenttypeuuid(documentTypeUuid);
-
+    request.setOrderuuid(orderUuid);
     return this.getService().getOrder(request)
       .then(order => {
         if (isConvert) {
