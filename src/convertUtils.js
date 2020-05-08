@@ -203,7 +203,9 @@ const convertUtils = {
         ),
         templateBusinessPartner: convertUtils.convertBusinessPartnerFromGRPC(
           pointOfSalesToConvert.getTemplatebusinesspartner()
-        )
+        ),
+        priceListUuid: pointOfSalesToConvert.getPricelistuuid(),
+        currency: convertUtils.convertCurrencyFromGRPC()
       };
     }
     return {
@@ -215,7 +217,9 @@ const convertUtils = {
       isModifyPrice: undefined,
       isPOSRequiredPIN: undefined,
       salesRepresentative: undefined,
-      templateBusinessPartner: undefined
+      templateBusinessPartner: undefined,
+      priceListUuid: undefined,
+      currency: undefined
     };
   },
 
@@ -270,7 +274,7 @@ const convertUtils = {
         uuid: documentTypeToConvert.getUuid(),
         id: documentTypeToConvert.getId(),
         name: documentTypeToConvert.getName(),
-        printerName: documentTypeToConvert.getPrintername(),
+        printName: documentTypeToConvert.getPrintname(),
         description: documentTypeToConvert.getDescription()
       };
     }
@@ -278,7 +282,7 @@ const convertUtils = {
       uuid: undefined,
       id: undefined,
       name: undefined,
-      printerName: undefined,
+      printName: undefined,
       description: undefined
     };
   },
@@ -369,7 +373,8 @@ const convertUtils = {
         ),
         grandTotal: convertUtils.convertDecimalValue(
           orderToConvert.getGrandtotal()
-        )
+        ),
+        dateOrdered: new Date(orderToConvert.getDateordered())
       };
     }
     return {
@@ -380,7 +385,8 @@ const convertUtils = {
       salesRepresentative: undefined,
       documentStatus: undefined,
       totalLines: undefined,
-      grandTotal: undefined
+      grandTotal: undefined,
+      dateOrdered: undefined
     };
   }
 }

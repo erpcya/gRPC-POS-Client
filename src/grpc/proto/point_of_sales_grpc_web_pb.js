@@ -640,5 +640,60 @@ proto.data.StorePromiseClient.prototype.getOrder =
 };
 
 
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.ListOrdersRequest,
+ *   !proto.data.ListOrdersResponse>}
+ */
+const methodInfo_Store_ListOrders = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.ListOrdersResponse,
+  /** @param {!proto.data.ListOrdersRequest} request */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.ListOrdersResponse.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.ListOrdersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.ListOrdersResponse)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.ListOrdersResponse>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.StoreClient.prototype.listOrders =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.Store/ListOrders',
+      request,
+      metadata || {},
+      methodInfo_Store_ListOrders,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.ListOrdersRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.ListOrdersResponse>}
+ *     A native promise that resolves to the response
+ */
+proto.data.StorePromiseClient.prototype.listOrders =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.Store/ListOrders',
+      request,
+      metadata || {},
+      methodInfo_Store_ListOrders);
+};
+
+
 module.exports = proto.data;
 

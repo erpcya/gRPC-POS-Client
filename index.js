@@ -118,6 +118,40 @@ class PointOfSales {
   }
 
   /**
+   * Get List Point Of Sales
+   */
+  listOrders({
+    posUuid,
+    pageSize,
+    pageToken,
+    isConvert = true
+  }) {
+    const { ListOrdersRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new ListOrdersRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setPosuuid(posUuid);
+    request.setPageSize(pageSize);
+    request.setPageToken(pageToken);
+    //
+    return this.getService().listOrders(request)
+    .then(response => {
+      if (isConvert) {
+        const { convertOrderFromGRPC } = require('./src/convertUtils');
+
+        return {
+          recordCount: response.getRecordcount(),
+          ordersList: response.getOrdersList().map(order => {
+            return convertOrderFromGRPC(order);
+          }),
+          nextPageToken: response.getNextPageToken()
+        };
+      }
+      return response;
+    });
+  }
+
+  /**
    * Get Product Price
    */
   getProductPrice({
