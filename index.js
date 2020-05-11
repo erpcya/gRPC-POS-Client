@@ -13,6 +13,7 @@
  * You should have received a copy of the GNU General Public License                 *
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
  ************************************************************************************/
+
 class PointOfSales {
 
   /**
@@ -58,6 +59,17 @@ class PointOfSales {
     clientRequest.setOrganizationuuid(this.organizationUuid);
     clientRequest.setWarehouseuuid(this.warehouseUuid);
     return clientRequest;
+  }
+
+  getSystemCoreInstance() {
+    const SystemCore = require('@adempiere/grpc-core-client');
+    return new SystemCore({
+      host: this.host,
+      sessionUuid: this.sessionUuid,
+      organizationUuid: this.organizationUuid,
+      warehouseUuid: this.warehouseUuid,
+      language: this.language
+    });
   }
 
   /**
@@ -181,7 +193,7 @@ class PointOfSales {
     return this.getService().getProductPrice(request)
     .then(productPriceResponse => {
       if (isConvert) {
-        const { convertProductPriceFromGRPC } = require('./src/convertUtils');
+        const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
         return convertProductPriceFromGRPC(productPriceResponse);
       }
       return productPriceResponse;
