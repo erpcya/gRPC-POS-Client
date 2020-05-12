@@ -52,7 +52,7 @@ class PointOfSales {
   }
 
   getClientRequest() {
-    const { ClientRequest } = require('./src/grpc/proto/core_functionality_pb.js');
+    const { ClientRequest } = require('@adempiere/grpc-core-client/src/grpc/proto/core_functionality_pb.js');
     const clientRequest = new ClientRequest();
     clientRequest.setSessionuuid(this.sessionUuid);
     clientRequest.setLanguage(this.language);
@@ -86,13 +86,13 @@ class PointOfSales {
     request.setPointofsalesuuid(pointOfSalesUuid);
     //
     return this.getService().getPointOfSales(request)
-    .then(pontOfSalesResponse => {
-      if (isConvert) {
-        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
-        return convertPointOfSalesFromGRPC(posItem);
-      }
-      return pontOfSalesResponse;
-    });
+      .then(pontOfSalesResponse => {
+        if (isConvert) {
+          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+          return convertPointOfSalesFromGRPC(posItem);
+        }
+        return pontOfSalesResponse;
+      });
   }
 
   /**
@@ -113,20 +113,20 @@ class PointOfSales {
     request.setPageToken(pageToken);
     //
     return this.getService().listPointOfSales(request)
-    .then(pontOfSalesResponse => {
-      if (isConvert) {
-        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+      .then(pontOfSalesResponse => {
+        if (isConvert) {
+          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
 
-        return {
-          recordCount: pontOfSalesResponse.getRecordcount(),
-          sellingPointsList: pontOfSalesResponse.getSellingpointsList().map(posItem => {
-            return convertPointOfSalesFromGRPC(posItem);
-          }),
-          nextPageToken: pontOfSalesResponse.getNextPageToken()
-        };
-      }
-      return pontOfSalesResponse;
-    });
+          return {
+            recordCount: pontOfSalesResponse.getRecordcount(),
+            sellingPointsList: pontOfSalesResponse.getSellingpointsList().map(posItem => {
+              return convertPointOfSalesFromGRPC(posItem);
+            }),
+            nextPageToken: pontOfSalesResponse.getNextPageToken()
+          };
+        }
+        return pontOfSalesResponse;
+      });
   }
 
   /**
@@ -147,20 +147,20 @@ class PointOfSales {
     request.setPageToken(pageToken);
     //
     return this.getService().listOrders(request)
-    .then(response => {
-      if (isConvert) {
-        const { convertOrderFromGRPC } = require('./src/convertUtils');
+      .then(response => {
+        if (isConvert) {
+          const { convertOrderFromGRPC } = require('./src/convertUtils');
 
-        return {
-          recordCount: response.getRecordcount(),
-          ordersList: response.getOrdersList().map(order => {
-            return convertOrderFromGRPC(order);
-          }),
-          nextPageToken: response.getNextPageToken()
-        };
-      }
-      return response;
-    });
+          return {
+            recordCount: response.getRecordcount(),
+            ordersList: response.getOrdersList().map(order => {
+              return convertOrderFromGRPC(order);
+            }),
+            nextPageToken: response.getNextPageToken()
+          };
+        }
+        return response;
+      });
   }
 
   /**
@@ -191,13 +191,13 @@ class PointOfSales {
     request.setValidfrom(validFrom);
     //
     return this.getService().getProductPrice(request)
-    .then(productPriceResponse => {
-      if (isConvert) {
-        const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
-        return convertProductPriceFromGRPC(productPriceResponse);
-      }
-      return productPriceResponse;
-    });
+      .then(productPriceResponse => {
+        if (isConvert) {
+          const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
+          return convertProductPriceFromGRPC(productPriceResponse);
+        }
+        return productPriceResponse;
+      });
   }
 
   createOrder({
