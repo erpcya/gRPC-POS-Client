@@ -1,3 +1,4 @@
+// source: proto/point_of_sales.proto
 /**
  * @fileoverview
  * @enhanceable
@@ -11,9 +12,9 @@ var jspb = require('google-protobuf');
 var goog = jspb;
 var global = Function('return this')();
 
-var proto_core_functionality_pb = require('../proto/core_functionality_pb.js');
+var proto_core_functionality_pb = require('@adempiere/grpc-core-client/src/grpc/proto/core_functionality_pb.js');
 goog.object.extend(proto, proto_core_functionality_pb);
-var proto_base_data_type_pb = require('../proto/base_data_type_pb.js');
+var proto_base_data_type_pb = require('@adempiere/grpc-core-client/src/grpc/proto/base_data_type_pb.js');
 goog.object.extend(proto, proto_base_data_type_pb);
 goog.exportSymbol('proto.data.CreateOrderLineRequest', null, global);
 goog.exportSymbol('proto.data.CreateOrderRequest', null, global);
@@ -544,9 +545,12 @@ proto.data.ListPointOfSalesResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListPointOfSalesResponse} returns this
+ */
 proto.data.ListPointOfSalesResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -560,9 +564,12 @@ proto.data.ListPointOfSalesResponse.prototype.getSellingpointsList = function() 
 };
 
 
-/** @param {!Array<!proto.data.PointOfSales>} value */
+/**
+ * @param {!Array<!proto.data.PointOfSales>} value
+ * @return {!proto.data.ListPointOfSalesResponse} returns this
+*/
 proto.data.ListPointOfSalesResponse.prototype.setSellingpointsList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -578,9 +585,10 @@ proto.data.ListPointOfSalesResponse.prototype.addSellingpoints = function(opt_va
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListPointOfSalesResponse} returns this
  */
 proto.data.ListPointOfSalesResponse.prototype.clearSellingpointsList = function() {
-  this.setSellingpointsList([]);
+  return this.setSellingpointsList([]);
 };
 
 
@@ -593,9 +601,12 @@ proto.data.ListPointOfSalesResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListPointOfSalesResponse} returns this
+ */
 proto.data.ListPointOfSalesResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -754,9 +765,12 @@ proto.data.ListProductPriceResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListProductPriceResponse} returns this
+ */
 proto.data.ListProductPriceResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -770,9 +784,12 @@ proto.data.ListProductPriceResponse.prototype.getProductpricesList = function() 
 };
 
 
-/** @param {!Array<!proto.data.ProductPrice>} value */
+/**
+ * @param {!Array<!proto.data.ProductPrice>} value
+ * @return {!proto.data.ListProductPriceResponse} returns this
+*/
 proto.data.ListProductPriceResponse.prototype.setProductpricesList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -788,9 +805,10 @@ proto.data.ListProductPriceResponse.prototype.addProductprices = function(opt_va
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListProductPriceResponse} returns this
  */
 proto.data.ListProductPriceResponse.prototype.clearProductpricesList = function() {
-  this.setProductpricesList([]);
+  return this.setProductpricesList([]);
 };
 
 
@@ -803,9 +821,12 @@ proto.data.ListProductPriceResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceResponse} returns this
+ */
 proto.data.ListProductPriceResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -964,9 +985,12 @@ proto.data.ListOrdersResponse.prototype.getRecordcount = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrdersResponse} returns this
+ */
 proto.data.ListOrdersResponse.prototype.setRecordcount = function(value) {
-  jspb.Message.setProto3IntField(this, 1, value);
+  return jspb.Message.setProto3IntField(this, 1, value);
 };
 
 
@@ -980,9 +1004,12 @@ proto.data.ListOrdersResponse.prototype.getOrdersList = function() {
 };
 
 
-/** @param {!Array<!proto.data.Order>} value */
+/**
+ * @param {!Array<!proto.data.Order>} value
+ * @return {!proto.data.ListOrdersResponse} returns this
+*/
 proto.data.ListOrdersResponse.prototype.setOrdersList = function(value) {
-  jspb.Message.setRepeatedWrapperField(this, 2, value);
+  return jspb.Message.setRepeatedWrapperField(this, 2, value);
 };
 
 
@@ -998,9 +1025,10 @@ proto.data.ListOrdersResponse.prototype.addOrders = function(opt_value, opt_inde
 
 /**
  * Clears the list making it empty but non-null.
+ * @return {!proto.data.ListOrdersResponse} returns this
  */
 proto.data.ListOrdersResponse.prototype.clearOrdersList = function() {
-  this.setOrdersList([]);
+  return this.setOrdersList([]);
 };
 
 
@@ -1013,9 +1041,12 @@ proto.data.ListOrdersResponse.prototype.getNextPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersResponse} returns this
+ */
 proto.data.ListOrdersResponse.prototype.setNextPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -1179,17 +1210,21 @@ proto.data.ListOrdersRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+*/
 proto.data.ListOrdersRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListOrdersRequest} returns this
  */
 proto.data.ListOrdersRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1211,9 +1246,12 @@ proto.data.ListOrdersRequest.prototype.getPosuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
 proto.data.ListOrdersRequest.prototype.setPosuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1226,9 +1264,12 @@ proto.data.ListOrdersRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
 proto.data.ListOrdersRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -1241,9 +1282,12 @@ proto.data.ListOrdersRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
 proto.data.ListOrdersRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -1455,17 +1499,21 @@ proto.data.ListProductPriceRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+*/
 proto.data.ListProductPriceRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListProductPriceRequest} returns this
  */
 proto.data.ListProductPriceRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1487,9 +1535,12 @@ proto.data.ListProductPriceRequest.prototype.getSearchvalue = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setSearchvalue = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1502,9 +1553,12 @@ proto.data.ListProductPriceRequest.prototype.getPricelistuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setPricelistuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -1517,9 +1571,12 @@ proto.data.ListProductPriceRequest.prototype.getBusinesspartneruuid = function()
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setBusinesspartneruuid = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -1532,9 +1589,12 @@ proto.data.ListProductPriceRequest.prototype.getWarehouseuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setWarehouseuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -1547,9 +1607,12 @@ proto.data.ListProductPriceRequest.prototype.getValidfrom = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setValidfrom = function(value) {
-  jspb.Message.setProto3IntField(this, 6, value);
+  return jspb.Message.setProto3IntField(this, 6, value);
 };
 
 
@@ -1562,9 +1625,12 @@ proto.data.ListProductPriceRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 7, value);
 };
 
 
@@ -1577,9 +1643,12 @@ proto.data.ListProductPriceRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
 proto.data.ListProductPriceRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -1743,17 +1812,21 @@ proto.data.ListPointOfSalesRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.ListPointOfSalesRequest} returns this
+*/
 proto.data.ListPointOfSalesRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.ListPointOfSalesRequest} returns this
  */
 proto.data.ListPointOfSalesRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1775,9 +1848,12 @@ proto.data.ListPointOfSalesRequest.prototype.getUseruuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListPointOfSalesRequest} returns this
+ */
 proto.data.ListPointOfSalesRequest.prototype.setUseruuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -1790,9 +1866,12 @@ proto.data.ListPointOfSalesRequest.prototype.getPageSize = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.ListPointOfSalesRequest} returns this
+ */
 proto.data.ListPointOfSalesRequest.prototype.setPageSize = function(value) {
-  jspb.Message.setProto3IntField(this, 3, value);
+  return jspb.Message.setProto3IntField(this, 3, value);
 };
 
 
@@ -1805,9 +1884,12 @@ proto.data.ListPointOfSalesRequest.prototype.getPageToken = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.ListPointOfSalesRequest} returns this
+ */
 proto.data.ListPointOfSalesRequest.prototype.setPageToken = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -1947,17 +2029,21 @@ proto.data.PointOfSalesRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.PointOfSalesRequest} returns this
+*/
 proto.data.PointOfSalesRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSalesRequest} returns this
  */
 proto.data.PointOfSalesRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -1979,9 +2065,12 @@ proto.data.PointOfSalesRequest.prototype.getPointofsalesuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSalesRequest} returns this
+ */
 proto.data.PointOfSalesRequest.prototype.setPointofsalesuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -2232,9 +2321,12 @@ proto.data.PointOfSales.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -2247,9 +2339,12 @@ proto.data.PointOfSales.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -2262,9 +2357,12 @@ proto.data.PointOfSales.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2277,9 +2375,12 @@ proto.data.PointOfSales.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -2292,9 +2393,12 @@ proto.data.PointOfSales.prototype.getHelp = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setHelp = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -2307,9 +2411,12 @@ proto.data.PointOfSales.prototype.getIsmodifyprice = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setIsmodifyprice = function(value) {
-  jspb.Message.setProto3BooleanField(this, 6, value);
+  return jspb.Message.setProto3BooleanField(this, 6, value);
 };
 
 
@@ -2322,9 +2429,12 @@ proto.data.PointOfSales.prototype.getIsposrequiredpin = function() {
 };
 
 
-/** @param {boolean} value */
+/**
+ * @param {boolean} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setIsposrequiredpin = function(value) {
-  jspb.Message.setProto3BooleanField(this, 7, value);
+  return jspb.Message.setProto3BooleanField(this, 7, value);
 };
 
 
@@ -2338,17 +2448,21 @@ proto.data.PointOfSales.prototype.getSalesrepresentative = function() {
 };
 
 
-/** @param {?proto.data.SalesRepresentative|undefined} value */
+/**
+ * @param {?proto.data.SalesRepresentative|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
 proto.data.PointOfSales.prototype.setSalesrepresentative = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
  */
 proto.data.PointOfSales.prototype.clearSalesrepresentative = function() {
-  this.setSalesrepresentative(undefined);
+  return this.setSalesrepresentative(undefined);
 };
 
 
@@ -2371,17 +2485,21 @@ proto.data.PointOfSales.prototype.getTemplatebusinesspartner = function() {
 };
 
 
-/** @param {?proto.data.BusinessPartner|undefined} value */
+/**
+ * @param {?proto.data.BusinessPartner|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
 proto.data.PointOfSales.prototype.setTemplatebusinesspartner = function(value) {
-  jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
  */
 proto.data.PointOfSales.prototype.clearTemplatebusinesspartner = function() {
-  this.setTemplatebusinesspartner(undefined);
+  return this.setTemplatebusinesspartner(undefined);
 };
 
 
@@ -2403,9 +2521,12 @@ proto.data.PointOfSales.prototype.getPricelistuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
 proto.data.PointOfSales.prototype.setPricelistuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 10, value);
+  return jspb.Message.setProto3StringField(this, 10, value);
 };
 
 
@@ -2419,17 +2540,21 @@ proto.data.PointOfSales.prototype.getCurrency = function() {
 };
 
 
-/** @param {?proto.data.Currency|undefined} value */
+/**
+ * @param {?proto.data.Currency|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
 proto.data.PointOfSales.prototype.setCurrency = function(value) {
-  jspb.Message.setWrapperField(this, 11, value);
+  return jspb.Message.setWrapperField(this, 11, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
  */
 proto.data.PointOfSales.prototype.clearCurrency = function() {
-  this.setCurrency(undefined);
+  return this.setCurrency(undefined);
 };
 
 
@@ -2602,17 +2727,21 @@ proto.data.CreateOrderRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.CreateOrderRequest} returns this
+*/
 proto.data.CreateOrderRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.CreateOrderRequest} returns this
  */
 proto.data.CreateOrderRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -2634,9 +2763,12 @@ proto.data.CreateOrderRequest.prototype.getPosuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderRequest} returns this
+ */
 proto.data.CreateOrderRequest.prototype.setPosuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -2649,9 +2781,12 @@ proto.data.CreateOrderRequest.prototype.getCustomeruuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderRequest} returns this
+ */
 proto.data.CreateOrderRequest.prototype.setCustomeruuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -2664,9 +2799,12 @@ proto.data.CreateOrderRequest.prototype.getDocumenttypeuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderRequest} returns this
+ */
 proto.data.CreateOrderRequest.prototype.setDocumenttypeuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -2806,17 +2944,21 @@ proto.data.DeleteOrderRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.DeleteOrderRequest} returns this
+*/
 proto.data.DeleteOrderRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.DeleteOrderRequest} returns this
  */
 proto.data.DeleteOrderRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -2838,9 +2980,12 @@ proto.data.DeleteOrderRequest.prototype.getOrderuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DeleteOrderRequest} returns this
+ */
 proto.data.DeleteOrderRequest.prototype.setOrderuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -2980,17 +3125,21 @@ proto.data.DeleteOrderLineRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.DeleteOrderLineRequest} returns this
+*/
 proto.data.DeleteOrderLineRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.DeleteOrderLineRequest} returns this
  */
 proto.data.DeleteOrderLineRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3012,9 +3161,12 @@ proto.data.DeleteOrderLineRequest.prototype.getOrderlineuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.DeleteOrderLineRequest} returns this
+ */
 proto.data.DeleteOrderLineRequest.prototype.setOrderlineuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -3244,17 +3396,21 @@ proto.data.CreateOrderLineRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+*/
 proto.data.CreateOrderLineRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.CreateOrderLineRequest} returns this
  */
 proto.data.CreateOrderLineRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3276,9 +3432,12 @@ proto.data.CreateOrderLineRequest.prototype.getOrderuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+ */
 proto.data.CreateOrderLineRequest.prototype.setOrderuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -3291,9 +3450,12 @@ proto.data.CreateOrderLineRequest.prototype.getProductuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+ */
 proto.data.CreateOrderLineRequest.prototype.setProductuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -3306,9 +3468,12 @@ proto.data.CreateOrderLineRequest.prototype.getChargeuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+ */
 proto.data.CreateOrderLineRequest.prototype.setChargeuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -3321,9 +3486,12 @@ proto.data.CreateOrderLineRequest.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+ */
 proto.data.CreateOrderLineRequest.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -3337,17 +3505,21 @@ proto.data.CreateOrderLineRequest.prototype.getQuantity = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+*/
 proto.data.CreateOrderLineRequest.prototype.setQuantity = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.CreateOrderLineRequest} returns this
  */
 proto.data.CreateOrderLineRequest.prototype.clearQuantity = function() {
-  this.setQuantity(undefined);
+  return this.setQuantity(undefined);
 };
 
 
@@ -3370,17 +3542,21 @@ proto.data.CreateOrderLineRequest.prototype.getPrice = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+*/
 proto.data.CreateOrderLineRequest.prototype.setPrice = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.CreateOrderLineRequest} returns this
  */
 proto.data.CreateOrderLineRequest.prototype.clearPrice = function() {
-  this.setPrice(undefined);
+  return this.setPrice(undefined);
 };
 
 
@@ -3403,17 +3579,21 @@ proto.data.CreateOrderLineRequest.prototype.getDiscountrate = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+*/
 proto.data.CreateOrderLineRequest.prototype.setDiscountrate = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.CreateOrderLineRequest} returns this
  */
 proto.data.CreateOrderLineRequest.prototype.clearDiscountrate = function() {
-  this.setDiscountrate(undefined);
+  return this.setDiscountrate(undefined);
 };
 
 
@@ -3435,9 +3615,12 @@ proto.data.CreateOrderLineRequest.prototype.getWarehouseuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderLineRequest} returns this
+ */
 proto.data.CreateOrderLineRequest.prototype.setWarehouseuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 9, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -3631,17 +3814,21 @@ proto.data.UpdateOrderLineRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+*/
 proto.data.UpdateOrderLineRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
  */
 proto.data.UpdateOrderLineRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3663,9 +3850,12 @@ proto.data.UpdateOrderLineRequest.prototype.getOrderlineuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+ */
 proto.data.UpdateOrderLineRequest.prototype.setOrderlineuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -3678,9 +3868,12 @@ proto.data.UpdateOrderLineRequest.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+ */
 proto.data.UpdateOrderLineRequest.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -3694,17 +3887,21 @@ proto.data.UpdateOrderLineRequest.prototype.getQuantity = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+*/
 proto.data.UpdateOrderLineRequest.prototype.setQuantity = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
  */
 proto.data.UpdateOrderLineRequest.prototype.clearQuantity = function() {
-  this.setQuantity(undefined);
+  return this.setQuantity(undefined);
 };
 
 
@@ -3727,17 +3924,21 @@ proto.data.UpdateOrderLineRequest.prototype.getPrice = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+*/
 proto.data.UpdateOrderLineRequest.prototype.setPrice = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
  */
 proto.data.UpdateOrderLineRequest.prototype.clearPrice = function() {
-  this.setPrice(undefined);
+  return this.setPrice(undefined);
 };
 
 
@@ -3760,17 +3961,21 @@ proto.data.UpdateOrderLineRequest.prototype.getDiscountrate = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+*/
 proto.data.UpdateOrderLineRequest.prototype.setDiscountrate = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
  */
 proto.data.UpdateOrderLineRequest.prototype.clearDiscountrate = function() {
-  this.setDiscountrate(undefined);
+  return this.setDiscountrate(undefined);
 };
 
 
@@ -3919,17 +4124,21 @@ proto.data.GetOrderRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.GetOrderRequest} returns this
+*/
 proto.data.GetOrderRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.GetOrderRequest} returns this
  */
 proto.data.GetOrderRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -3951,9 +4160,12 @@ proto.data.GetOrderRequest.prototype.getOrderuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetOrderRequest} returns this
+ */
 proto.data.GetOrderRequest.prototype.setOrderuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -4184,9 +4396,12 @@ proto.data.Order.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Order} returns this
+ */
 proto.data.Order.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4199,9 +4414,12 @@ proto.data.Order.prototype.getId = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Order} returns this
+ */
 proto.data.Order.prototype.setId = function(value) {
-  jspb.Message.setProto3IntField(this, 2, value);
+  return jspb.Message.setProto3IntField(this, 2, value);
 };
 
 
@@ -4214,9 +4432,12 @@ proto.data.Order.prototype.getDocumentno = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.Order} returns this
+ */
 proto.data.Order.prototype.setDocumentno = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -4230,17 +4451,21 @@ proto.data.Order.prototype.getDocumenttype = function() {
 };
 
 
-/** @param {?proto.data.DocumentType|undefined} value */
+/**
+ * @param {?proto.data.DocumentType|undefined} value
+ * @return {!proto.data.Order} returns this
+*/
 proto.data.Order.prototype.setDocumenttype = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Order} returns this
  */
 proto.data.Order.prototype.clearDocumenttype = function() {
-  this.setDocumenttype(undefined);
+  return this.setDocumenttype(undefined);
 };
 
 
@@ -4263,17 +4488,21 @@ proto.data.Order.prototype.getSalesrepresentative = function() {
 };
 
 
-/** @param {?proto.data.SalesRepresentative|undefined} value */
+/**
+ * @param {?proto.data.SalesRepresentative|undefined} value
+ * @return {!proto.data.Order} returns this
+*/
 proto.data.Order.prototype.setSalesrepresentative = function(value) {
-  jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setWrapperField(this, 5, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Order} returns this
  */
 proto.data.Order.prototype.clearSalesrepresentative = function() {
-  this.setSalesrepresentative(undefined);
+  return this.setSalesrepresentative(undefined);
 };
 
 
@@ -4296,17 +4525,21 @@ proto.data.Order.prototype.getDocumentstatus = function() {
 };
 
 
-/** @param {?proto.data.DocumentStatus|undefined} value */
+/**
+ * @param {?proto.data.DocumentStatus|undefined} value
+ * @return {!proto.data.Order} returns this
+*/
 proto.data.Order.prototype.setDocumentstatus = function(value) {
-  jspb.Message.setWrapperField(this, 6, value);
+  return jspb.Message.setWrapperField(this, 6, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Order} returns this
  */
 proto.data.Order.prototype.clearDocumentstatus = function() {
-  this.setDocumentstatus(undefined);
+  return this.setDocumentstatus(undefined);
 };
 
 
@@ -4329,17 +4562,21 @@ proto.data.Order.prototype.getTotallines = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Order} returns this
+*/
 proto.data.Order.prototype.setTotallines = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Order} returns this
  */
 proto.data.Order.prototype.clearTotallines = function() {
-  this.setTotallines(undefined);
+  return this.setTotallines(undefined);
 };
 
 
@@ -4362,17 +4599,21 @@ proto.data.Order.prototype.getGrandtotal = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.Order} returns this
+*/
 proto.data.Order.prototype.setGrandtotal = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.Order} returns this
  */
 proto.data.Order.prototype.clearGrandtotal = function() {
-  this.setGrandtotal(undefined);
+  return this.setGrandtotal(undefined);
 };
 
 
@@ -4394,9 +4635,12 @@ proto.data.Order.prototype.getDateordered = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.Order} returns this
+ */
 proto.data.Order.prototype.setDateordered = function(value) {
-  jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
@@ -4681,9 +4925,12 @@ proto.data.OrderLine.prototype.getUuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.OrderLine} returns this
+ */
 proto.data.OrderLine.prototype.setUuid = function(value) {
-  jspb.Message.setProto3StringField(this, 1, value);
+  return jspb.Message.setProto3StringField(this, 1, value);
 };
 
 
@@ -4696,9 +4943,12 @@ proto.data.OrderLine.prototype.getOrderuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.OrderLine} returns this
+ */
 proto.data.OrderLine.prototype.setOrderuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -4712,17 +4962,21 @@ proto.data.OrderLine.prototype.getProduct = function() {
 };
 
 
-/** @param {?proto.data.Product|undefined} value */
+/**
+ * @param {?proto.data.Product|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setProduct = function(value) {
-  jspb.Message.setWrapperField(this, 3, value);
+  return jspb.Message.setWrapperField(this, 3, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearProduct = function() {
-  this.setProduct(undefined);
+  return this.setProduct(undefined);
 };
 
 
@@ -4745,17 +4999,21 @@ proto.data.OrderLine.prototype.getCharge = function() {
 };
 
 
-/** @param {?proto.data.Charge|undefined} value */
+/**
+ * @param {?proto.data.Charge|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setCharge = function(value) {
-  jspb.Message.setWrapperField(this, 4, value);
+  return jspb.Message.setWrapperField(this, 4, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearCharge = function() {
-  this.setCharge(undefined);
+  return this.setCharge(undefined);
 };
 
 
@@ -4777,9 +5035,12 @@ proto.data.OrderLine.prototype.getLinedescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.OrderLine} returns this
+ */
 proto.data.OrderLine.prototype.setLinedescription = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -4792,9 +5053,12 @@ proto.data.OrderLine.prototype.getDescription = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.OrderLine} returns this
+ */
 proto.data.OrderLine.prototype.setDescription = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -4808,17 +5072,21 @@ proto.data.OrderLine.prototype.getWarehouse = function() {
 };
 
 
-/** @param {?proto.data.Warehouse|undefined} value */
+/**
+ * @param {?proto.data.Warehouse|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setWarehouse = function(value) {
-  jspb.Message.setWrapperField(this, 7, value);
+  return jspb.Message.setWrapperField(this, 7, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearWarehouse = function() {
-  this.setWarehouse(undefined);
+  return this.setWarehouse(undefined);
 };
 
 
@@ -4841,17 +5109,21 @@ proto.data.OrderLine.prototype.getQuantity = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setQuantity = function(value) {
-  jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 8, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearQuantity = function() {
-  this.setQuantity(undefined);
+  return this.setQuantity(undefined);
 };
 
 
@@ -4874,17 +5146,21 @@ proto.data.OrderLine.prototype.getPrice = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setPrice = function(value) {
-  jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 9, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearPrice = function() {
-  this.setPrice(undefined);
+  return this.setPrice(undefined);
 };
 
 
@@ -4907,17 +5183,21 @@ proto.data.OrderLine.prototype.getDiscountrate = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setDiscountrate = function(value) {
-  jspb.Message.setWrapperField(this, 10, value);
+  return jspb.Message.setWrapperField(this, 10, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearDiscountrate = function() {
-  this.setDiscountrate(undefined);
+  return this.setDiscountrate(undefined);
 };
 
 
@@ -4940,17 +5220,21 @@ proto.data.OrderLine.prototype.getTaxrate = function() {
 };
 
 
-/** @param {?proto.data.TaxRate|undefined} value */
+/**
+ * @param {?proto.data.TaxRate|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setTaxrate = function(value) {
-  jspb.Message.setWrapperField(this, 11, value);
+  return jspb.Message.setWrapperField(this, 11, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearTaxrate = function() {
-  this.setTaxrate(undefined);
+  return this.setTaxrate(undefined);
 };
 
 
@@ -4973,17 +5257,21 @@ proto.data.OrderLine.prototype.getLinenetamount = function() {
 };
 
 
-/** @param {?proto.data.Decimal|undefined} value */
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.OrderLine} returns this
+*/
 proto.data.OrderLine.prototype.setLinenetamount = function(value) {
-  jspb.Message.setWrapperField(this, 12, value);
+  return jspb.Message.setWrapperField(this, 12, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.OrderLine} returns this
  */
 proto.data.OrderLine.prototype.clearLinenetamount = function() {
-  this.setLinenetamount(undefined);
+  return this.setLinenetamount(undefined);
 };
 
 
@@ -5005,9 +5293,12 @@ proto.data.OrderLine.prototype.getLine = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.OrderLine} returns this
+ */
 proto.data.OrderLine.prototype.setLine = function(value) {
-  jspb.Message.setProto3IntField(this, 13, value);
+  return jspb.Message.setProto3IntField(this, 13, value);
 };
 
 
@@ -5231,17 +5522,21 @@ proto.data.GetProductPriceRequest.prototype.getClientrequest = function() {
 };
 
 
-/** @param {?proto.data.ClientRequest|undefined} value */
+/**
+ * @param {?proto.data.ClientRequest|undefined} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+*/
 proto.data.GetProductPriceRequest.prototype.setClientrequest = function(value) {
-  jspb.Message.setWrapperField(this, 1, value);
+  return jspb.Message.setWrapperField(this, 1, value);
 };
 
 
 /**
  * Clears the message field making it undefined.
+ * @return {!proto.data.GetProductPriceRequest} returns this
  */
 proto.data.GetProductPriceRequest.prototype.clearClientrequest = function() {
-  this.setClientrequest(undefined);
+  return this.setClientrequest(undefined);
 };
 
 
@@ -5263,9 +5558,12 @@ proto.data.GetProductPriceRequest.prototype.getSearchvalue = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setSearchvalue = function(value) {
-  jspb.Message.setProto3StringField(this, 2, value);
+  return jspb.Message.setProto3StringField(this, 2, value);
 };
 
 
@@ -5278,9 +5576,12 @@ proto.data.GetProductPriceRequest.prototype.getUpc = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setUpc = function(value) {
-  jspb.Message.setProto3StringField(this, 3, value);
+  return jspb.Message.setProto3StringField(this, 3, value);
 };
 
 
@@ -5293,9 +5594,12 @@ proto.data.GetProductPriceRequest.prototype.getValue = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setValue = function(value) {
-  jspb.Message.setProto3StringField(this, 4, value);
+  return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
@@ -5308,9 +5612,12 @@ proto.data.GetProductPriceRequest.prototype.getName = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setName = function(value) {
-  jspb.Message.setProto3StringField(this, 5, value);
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
@@ -5323,9 +5630,12 @@ proto.data.GetProductPriceRequest.prototype.getPricelistuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setPricelistuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 6, value);
+  return jspb.Message.setProto3StringField(this, 6, value);
 };
 
 
@@ -5338,9 +5648,12 @@ proto.data.GetProductPriceRequest.prototype.getBusinesspartneruuid = function() 
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setBusinesspartneruuid = function(value) {
-  jspb.Message.setProto3StringField(this, 7, value);
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
@@ -5353,9 +5666,12 @@ proto.data.GetProductPriceRequest.prototype.getWarehouseuuid = function() {
 };
 
 
-/** @param {string} value */
+/**
+ * @param {string} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setWarehouseuuid = function(value) {
-  jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 8, value);
 };
 
 
@@ -5368,9 +5684,12 @@ proto.data.GetProductPriceRequest.prototype.getValidfrom = function() {
 };
 
 
-/** @param {number} value */
+/**
+ * @param {number} value
+ * @return {!proto.data.GetProductPriceRequest} returns this
+ */
 proto.data.GetProductPriceRequest.prototype.setValidfrom = function(value) {
-  jspb.Message.setProto3IntField(this, 9, value);
+  return jspb.Message.setProto3IntField(this, 9, value);
 };
 
 
