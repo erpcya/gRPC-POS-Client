@@ -347,7 +347,7 @@ class PointOfSales {
     const request = new UpdateOrderLineRequest();
 
     request.setClientrequest(this.getClientRequest());
-    request.setOrderuuid(orderLineUuid);
+    request.setOrderlineuuid(orderLineUuid);
     request.setDescription(description);
     request.setQuantity(quantity);
     request.setPrice(price);
