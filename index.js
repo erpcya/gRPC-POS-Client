@@ -130,7 +130,7 @@ class PointOfSales {
   }
 
   /**
-   * Get List Point Of Sales
+   * Get List Orders from POS UUID
    */
   listOrders({
     posUuid,
@@ -155,6 +155,40 @@ class PointOfSales {
             recordCount: response.getRecordcount(),
             ordersList: response.getOrdersList().map(order => {
               return convertOrderFromGRPC(order);
+            }),
+            nextPageToken: response.getNextPageToken()
+          };
+        }
+        return response;
+      });
+  }
+
+  /**
+   * Get List Order Lines from Order UUID
+   */
+  listOrderLines({
+    orderUuid,
+    pageSize,
+    pageToken,
+    isConvert = true
+  }) {
+    const { ListOrderLinesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new ListOrderLinesRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderuuid(orderUuid);
+    request.setPageSize(pageSize);
+    request.setPageToken(pageToken);
+    //
+    return this.getService().listOrderLines(request)
+      .then(response => {
+        if (isConvert) {
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+
+          return {
+            recordCount: response.getRecordcount(),
+            orderLineList: response.getOrderLinesList().map(orderLine => {
+              return convertOrderLineFromGRPC(orderLine);
             }),
             nextPageToken: response.getNextPageToken()
           };
