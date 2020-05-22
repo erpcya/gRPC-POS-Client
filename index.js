@@ -1,6 +1,6 @@
 /*************************************************************************************
- * Product: ADempiere gRPC Business Data Client                                      *
- * Copyright (C) 2012-2018 E.R.P. Consultores y Asociados, C.A.                      *
+ * Product: ADempiere gRPC Point Of Sales Client                                     *
+ * Copyright (C) 2012-2020 E.R.P. Consultores y Asociados, C.A.                      *
  * Contributor(s): Yamel Senih ysenih@erpya.com                                      *
  * This program is free software: you can redistribute it and/or modify              *
  * it under the terms of the GNU General Public License as published by              *
@@ -88,7 +88,7 @@ class PointOfSales {
     return this.getService().getPointOfSales(request)
       .then(pontOfSalesResponse => {
         if (isConvert) {
-          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
           return convertPointOfSalesFromGRPC(posItem);
         }
         return pontOfSalesResponse;
@@ -115,7 +115,7 @@ class PointOfSales {
     return this.getService().listPointOfSales(request)
       .then(pontOfSalesResponse => {
         if (isConvert) {
-          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils');
+          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
 
           return {
             recordCount: pontOfSalesResponse.getRecordcount(),
@@ -149,7 +149,7 @@ class PointOfSales {
     return this.getService().listOrders(request)
       .then(response => {
         if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils');
+          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
 
           return {
             recordCount: response.getRecordcount(),
@@ -183,7 +183,7 @@ class PointOfSales {
     return this.getService().listOrderLines(request)
       .then(response => {
         if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
 
           return {
             recordCount: response.getRecordcount(),
@@ -251,7 +251,7 @@ class PointOfSales {
     return this.getService().createOrder(request)
       .then(createOrderResponse => {
         if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils');
+          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
           return convertOrderFromGRPC(createOrderResponse);
         }
         return createOrderResponse;
@@ -270,7 +270,7 @@ class PointOfSales {
     return this.getService().getOrder(request)
       .then(order => {
         if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils');
+          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
           return convertOrderFromGRPC(order);
         }
         return order;
@@ -316,7 +316,7 @@ class PointOfSales {
     return this.getService().createOrderLine(request)
       .then(createOrderLineResponse => {
         if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
           return convertOrderLineFromGRPC(createOrderLineResponse);
         }
         return createOrderLineResponse;
@@ -356,7 +356,7 @@ class PointOfSales {
     return this.getService().updateOrderLine(request)
       .then(updateOrderLineResponse => {
         if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils');
+          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
           return convertOrderLineFromGRPC(updateOrderLineResponse);
         }
         return updateOrderLineResponse;
