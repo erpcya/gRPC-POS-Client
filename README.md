@@ -1,11 +1,8 @@
 # ADempiere POS Client for gRPC
 
 [![npm version](https://img.shields.io/npm/v/@adempiere/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
-
 [![License](https://img.shields.io/npm/l/@adempiere/grpc-pos-client.svg)](https://github.com/erpcya/grpc-pos-client/blob/master/LICENSE)
-
 [![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
-
 [![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
 
 
@@ -64,7 +61,7 @@ For recreate stub class you must have follow:
 - Also you can see it: [gRPC-web](https://github.com/grpc/grpc-web)
 - [gRPC](https://grpc.io/docs/tutorials/basic/web.html)
 
-Note: You can also install `proto` by going to the repository directory and run the command:
+Note: You can also install `protoc` and `protoc-gen-grpc-web` by going to the repository directory and run the command:
 ```Shell
 sh install-protoc.sh
 ```
