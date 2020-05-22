@@ -1,11 +1,13 @@
 # ADempiere POS Client for gRPC
 
-[![npm version](https://img.shields.io/npm/v/@adempiere/grpc-data-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-data-client)
-[![License](https://img.shields.io/npm/l/@adempiere/grpc-data-client.svg)](https://github.com/erpcya/adempiere-gRPC-Server/blob/master/LICENSE)
-[![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-data-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-data-client)
-<!--
-[![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-data-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-data-client)
--->
+[![npm version](https://img.shields.io/npm/v/@adempiere/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
+
+[![License](https://img.shields.io/npm/l/@adempiere/grpc-pos-client.svg)](https://github.com/erpcya/grpc-pos-client/blob/master/LICENSE)
+
+[![Downloads](https://img.shields.io/npm/dm/@adempiere/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
+
+[![Dependencies](https://img.shields.io/librariesio/github/erpcya/grpc-pos-client.svg)](https://www.npmjs.com/package/@adempiere/grpc-pos-client)
+
 
 ADempiere POS Client write in Javascript for gRPC service, use it for connect with
 [ADempiere-gRPC-Server](https://github.com/erpcya/adempiere-gRPC-Server).
@@ -20,6 +22,7 @@ ADempiere POS Client write in Javascript for gRPC service, use it for connect wi
 # installing via NPM
 npm i @adempiere/grpc-pos-client
 ```
+
 ``` bash
 # installing via Yarn
 yarn add @adempiere/grpc-pos-client
@@ -52,7 +55,6 @@ data.getProductPrice(searchValue: 'Patio Fun', priceListUuid: '8cc49692-fb40-11e
 Output
 ```
 Product Price
-
 ```
 
 ## Recreate proto stub class (only for contribute to project)
@@ -61,21 +63,34 @@ For recreate stub class you must have follow:
 - [protoc](https://github.com/grpc/grpc-web/releases)
 - Also you can see it: [gRPC-web](https://github.com/grpc/grpc-web)
 - [gRPC](https://grpc.io/docs/tutorials/basic/web.html)
-After installed it just go to source code folder an run it:
 
+Note: You can also install `proto` by going to the repository directory and run the command:
+```Shell
+sh install-protoc.sh
 ```
+
+When installation is complete, check the version with
+```Shell
+protoc --version
+```
+
+After installed it just go to source code folder and run it:
+
+Base Data Type
+```Shell
 protoc proto/base_data_type.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
+
 Core Functionality
-```
+```Shell
 protoc proto/core_functionality.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
-And run it for POS
 
+And run it for POS
 ```Shell
 protoc proto/point_of_sales.proto \
 --js_out=import_style=commonjs:src/grpc \
