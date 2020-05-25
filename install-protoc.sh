@@ -14,7 +14,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.            #
 #####################################################################################
 
-## Get the latest version number
+###         PROTOC
+
+## Get the latest version number of protoc
 VERSION=$(curl -s https://github.com/protocolbuffers/protobuf/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
 echo version: $VERSION
 PROTOC_ZIP=protoc-$VERSION-linux-x86_64.zip
@@ -23,8 +25,23 @@ PROTOC_ZIP=protoc-$VERSION-linux-x86_64.zip
 curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v$VERSION/$PROTOC_ZIP
 sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
 sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/#'
-rm -f $PROTOC_ZIP
+rm -f -v $PROTOC_ZIP
 
 ## Assign read and execute permissions
 sudo chmod 755 /usr/local/bin/protoc
 sudo chmod 755 -R /usr/local/include/google/
+
+
+###         PROTOC-GEN-GRPC-WEB
+
+## Get the latest version number of protoc-gen-grpc-web
+VERSION_WEB=$(curl -s https://github.com/grpc/grpc-web/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
+echo version: $VERSION_WEB
+PROTOC_WEB=protoc-gen-grpc-web-$VERSION_WEB-linux-x86_64
+
+## Download and install the file
+curl -OL https://github.com/grpc/grpc-web/releases/latest/download/v$VERSION/$PROTOC_WEB
+sudo mv -f -v $PROTOC_WEB /usr/local/bin/protoc-gen-grpc-web
+
+## Assign read and execute permissions
+sudo chmod 755 /usr/local/bin/protoc-gen-grpc-web
