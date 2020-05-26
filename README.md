@@ -17,7 +17,7 @@ ADempiere POS Client write in Javascript for gRPC service, use it for connect wi
 
 ``` bash
 # installing via NPM
-npm i @adempiere/grpc-pos-client
+npm i @adempiere/grpc-pos-client --save
 ```
 
 ``` bash
@@ -73,24 +73,12 @@ protoc --version
 
 After installed it just go to source code folder and run it:
 
-Base Data Type
-```Shell
-protoc proto/base_data_type.proto \
---js_out=import_style=commonjs:src/grpc \
---grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
-```
-
-Core Functionality
-```Shell
-protoc proto/core_functionality.proto \
---js_out=import_style=commonjs:src/grpc \
---grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
-```
-
-And run it for POS
+And run it for Point Of Sales
 ```Shell
 protoc proto/point_of_sales.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
 The result is generated on: src/grpc folder
+- `pont_of_sales_pb.js`
+- `pont_of_sales_grpc_web_pb.js`
