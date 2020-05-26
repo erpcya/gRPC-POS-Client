@@ -301,6 +301,7 @@ class PointOfSales {
     isConvert = true
   }) {
     const { CreateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const { getDecimalFromNumber } = require('@adempiere/grpc-core-client/src/convertValues.js');
     const request = new CreateOrderLineRequest();
 
     request.setClientrequest(this.getClientRequest());
@@ -308,9 +309,9 @@ class PointOfSales {
     request.setProductuuid(productUuid);
     request.setChargeuuid(chargeUuid);
     request.setDescription(description);
-    request.setQuantity(quantity);
-    request.setPrice(price);
-    request.setDiscountrate(discountRate);
+    request.setQuantity(getDecimalFromNumber(quantity));
+    request.setPrice(getDecimalFromNumber(price));
+    request.setDiscountrate(getDecimalFromNumber(discountRate));
     request.setWarehouseuuid(warehouseUuid);
 
     return this.getService().createOrderLine(request)
@@ -344,14 +345,15 @@ class PointOfSales {
     isConvert = true
   }) {
     const { UpdateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const { getDecimalFromNumber } = require('@adempiere/grpc-core-client/src/convertValues.js');
     const request = new UpdateOrderLineRequest();
 
     request.setClientrequest(this.getClientRequest());
     request.setOrderlineuuid(orderLineUuid);
     request.setDescription(description);
-    request.setQuantity(quantity);
-    request.setPrice(price);
-    request.setDiscountrate(discountRate);
+    request.setQuantity(getDecimalFromNumber(quantity));
+    request.setPrice(getDecimalFromNumber(price));
+    request.setDiscountrate(getDecimalFromNumber(discountRate));
 
     return this.getService().updateOrderLine(request)
       .then(updateOrderLineResponse => {
