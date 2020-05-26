@@ -43,19 +43,7 @@ const convertUtils = {
         )
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      name: undefined,
-      description: undefined,
-      help: undefined,
-      isModifyPrice: undefined,
-      isPOSRequiredPIN: undefined,
-      salesRepresentative: undefined,
-      templateBusinessPartner: undefined,
-      priceListUuid: undefined,
-      currency: undefined
-    };
+    return undefined;
   },
 
   convertOrderLineFromGRPC(orderLineToConvert) {
@@ -66,7 +54,7 @@ const convertUtils = {
         convertTaxRateFromGRPC,
         convertWarehouseFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
-      const { getDecimalFromValue } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         uuid: orderLineToConvert.getUuid(),
@@ -80,16 +68,16 @@ const convertUtils = {
         ),
         description: orderLineToConvert.getDescription(),
         lineDescription: orderLineToConvert.getLinedescription(),
-        quantity: getDecimalFromValue(
+        quantity: getDecimalFromGRPC(
           orderLineToConvert.getQuantity()
         ),
-        price: getDecimalFromValue(
+        price: getDecimalFromGRPC(
           orderLineToConvert.getPrice()
         ),
-        discountRate: getDecimalFromValue(
+        discountRate: getDecimalFromGRPC(
           orderLineToConvert.getDiscountrate()
         ),
-        lineNetAmount: getDecimalFromValue(
+        lineNetAmount: getDecimalFromGRPC(
           orderLineToConvert.getLinenetamount()
         ),
         taxRate: convertTaxRateFromGRPC(
@@ -100,27 +88,14 @@ const convertUtils = {
         )
       };
     }
-    return {
-      uuid: undefined,
-      orderUuid: undefined,
-      line: undefined,
-      product: undefined,
-      description: undefined,
-      lineDescription: undefined,
-      quantity: undefined,
-      price: undefined,
-      discountRate: undefined,
-      lineNetAmount: undefined,
-      taxRate: undefined,
-      warehouse: undefined
-    };
+    return undefined;
   },
 
   convertOrderFromGRPC(orderToConvert) {
     if (orderToConvert) {
       const {
         convertDocumentStatusFromGRPC,
-        getDecimalFromValue
+        getDecimalFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
       const {
         convertDocumentTypeFromGRPC,
@@ -140,26 +115,16 @@ const convertUtils = {
         documentStatus: convertDocumentStatusFromGRPC(
           orderToConvert.getDocumentstatus()
         ),
-        totalLines: getDecimalFromValue(
+        totalLines: getDecimalFromGRPC(
           orderToConvert.getTotallines()
         ),
-        grandTotal: getDecimalFromValue(
+        grandTotal: getDecimalFromGRPC(
           orderToConvert.getGrandtotal()
         ),
         dateOrdered: new Date(orderToConvert.getDateordered())
       };
     }
-    return {
-      uuid: undefined,
-      id: undefined,
-      documentNo: undefined,
-      documentType: undefined,
-      salesRepresentative: undefined,
-      documentStatus: undefined,
-      totalLines: undefined,
-      grandTotal: undefined,
-      dateOrdered: undefined
-    };
+    return undefined;
   }
 
 }

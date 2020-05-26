@@ -76,8 +76,7 @@ class PointOfSales {
    * Get Point Of Sales Definition
    */
   getPointOfSales({
-    pointOfSalesUuid,
-    isConvert = true
+    pointOfSalesUuid
   }) {
     const { PointOfSalesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new PointOfSalesRequest();
@@ -87,11 +86,9 @@ class PointOfSales {
     //
     return this.getService().getPointOfSales(request)
       .then(pontOfSalesResponse => {
-        if (isConvert) {
-          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
-          return convertPointOfSalesFromGRPC(posItem);
-        }
-        return pontOfSalesResponse;
+        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
+
+        return convertPointOfSalesFromGRPC(posItem);
       });
   }
 
@@ -101,8 +98,7 @@ class PointOfSales {
   listPointOfSales({
     userUuid,
     pageSize,
-    pageToken,
-    isConvert = true
+    pageToken
   }) {
     const { ListPointOfSalesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new ListPointOfSalesRequest();
@@ -114,18 +110,15 @@ class PointOfSales {
     //
     return this.getService().listPointOfSales(request)
       .then(pontOfSalesResponse => {
-        if (isConvert) {
-          const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
+        const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
 
-          return {
-            recordCount: pontOfSalesResponse.getRecordcount(),
-            sellingPointsList: pontOfSalesResponse.getSellingpointsList().map(posItem => {
-              return convertPointOfSalesFromGRPC(posItem);
-            }),
-            nextPageToken: pontOfSalesResponse.getNextPageToken()
-          };
-        }
-        return pontOfSalesResponse;
+        return {
+          recordCount: pontOfSalesResponse.getRecordcount(),
+          sellingPointsList: pontOfSalesResponse.getSellingpointsList().map(posItem => {
+            return convertPointOfSalesFromGRPC(posItem);
+          }),
+          nextPageToken: pontOfSalesResponse.getNextPageToken()
+        };
       });
   }
 
@@ -135,8 +128,7 @@ class PointOfSales {
   listOrders({
     posUuid,
     pageSize,
-    pageToken,
-    isConvert = true
+    pageToken
   }) {
     const { ListOrdersRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new ListOrdersRequest();
@@ -148,18 +140,15 @@ class PointOfSales {
     //
     return this.getService().listOrders(request)
       .then(response => {
-        if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
+        const { convertOrderFromGRPC } = require('./src/convertUtils.js');
 
-          return {
-            recordCount: response.getRecordcount(),
-            ordersList: response.getOrdersList().map(order => {
-              return convertOrderFromGRPC(order);
-            }),
-            nextPageToken: response.getNextPageToken()
-          };
-        }
-        return response;
+        return {
+          recordCount: response.getRecordcount(),
+          ordersList: response.getOrdersList().map(order => {
+            return convertOrderFromGRPC(order);
+          }),
+          nextPageToken: response.getNextPageToken()
+        };
       });
   }
 
@@ -169,8 +158,7 @@ class PointOfSales {
   listOrderLines({
     orderUuid,
     pageSize,
-    pageToken,
-    isConvert = true
+    pageToken
   }) {
     const { ListOrderLinesRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new ListOrderLinesRequest();
@@ -182,18 +170,15 @@ class PointOfSales {
     //
     return this.getService().listOrderLines(request)
       .then(response => {
-        if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
+        const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
 
-          return {
-            recordCount: response.getRecordcount(),
-            orderLineList: response.getOrderlinesList().map(orderLine => {
-              return convertOrderLineFromGRPC(orderLine);
-            }),
-            nextPageToken: response.getNextPageToken()
-          };
-        }
-        return response;
+        return {
+          recordCount: response.getRecordcount(),
+          orderLineList: response.getOrderlinesList().map(orderLine => {
+            return convertOrderLineFromGRPC(orderLine);
+          }),
+          nextPageToken: response.getNextPageToken()
+        };
       });
   }
 
@@ -208,8 +193,7 @@ class PointOfSales {
     priceListUuid,
     businessPartnerUuid,
     warehouseUuid,
-    validFrom,
-    isConvert = true
+    validFrom
   }) {
     const { GetProductPriceRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new GetProductPriceRequest();
@@ -226,11 +210,9 @@ class PointOfSales {
     //
     return this.getService().getProductPrice(request)
       .then(productPriceResponse => {
-        if (isConvert) {
-          const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
-          return convertProductPriceFromGRPC(productPriceResponse);
-        }
-        return productPriceResponse;
+        const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
+
+        return convertProductPriceFromGRPC(productPriceResponse);
       });
   }
 
@@ -238,7 +220,6 @@ class PointOfSales {
     posUuid,
     customerUuid,
     documentTypeUuid,
-    isConvert = true
   }) {
     const { CreateOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new CreateOrderRequest();
@@ -250,17 +231,14 @@ class PointOfSales {
 
     return this.getService().createOrder(request)
       .then(createOrderResponse => {
-        if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
-          return convertOrderFromGRPC(createOrderResponse);
-        }
-        return createOrderResponse;
+        const { convertOrderFromGRPC } = require('./src/convertUtils.js');
+
+        return convertOrderFromGRPC(createOrderResponse);
       });
   }
 
   getOrder({
     orderUuid,
-    isConvert = true
   }) {
     const { GetOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new GetOrderRequest();
@@ -268,12 +246,10 @@ class PointOfSales {
     request.setClientrequest(this.getClientRequest());
     request.setOrderuuid(orderUuid);
     return this.getService().getOrder(request)
-      .then(order => {
-        if (isConvert) {
-          const { convertOrderFromGRPC } = require('./src/convertUtils.js');
-          return convertOrderFromGRPC(order);
-        }
-        return order;
+      .then(orderResponse => {
+        const { convertOrderFromGRPC } = require('./src/convertUtils.js');
+
+        return convertOrderFromGRPC(orderResponse);
       });
   }
 
@@ -298,7 +274,6 @@ class PointOfSales {
     price,
     discountRate,
     warehouseUuid,
-    isConvert = true
   }) {
     const { CreateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const { getDecimalFromNumber } = require('@adempiere/grpc-core-client/src/convertValues.js');
@@ -316,11 +291,9 @@ class PointOfSales {
 
     return this.getService().createOrderLine(request)
       .then(createOrderLineResponse => {
-        if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
-          return convertOrderLineFromGRPC(createOrderLineResponse);
-        }
-        return createOrderLineResponse;
+        const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
+
+        return convertOrderLineFromGRPC(createOrderLineResponse);
       });
   }
 
@@ -341,8 +314,7 @@ class PointOfSales {
     description,
     quantity,
     price,
-    discountRate,
-    isConvert = true
+    discountRate
   }) {
     const { UpdateOrderLineRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const { getDecimalFromNumber } = require('@adempiere/grpc-core-client/src/convertValues.js');
@@ -357,11 +329,9 @@ class PointOfSales {
 
     return this.getService().updateOrderLine(request)
       .then(updateOrderLineResponse => {
-        if (isConvert) {
-          const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
-          return convertOrderLineFromGRPC(updateOrderLineResponse);
-        }
-        return updateOrderLineResponse;
+        const { convertOrderLineFromGRPC } = require('./src/convertUtils.js');
+
+        return convertOrderLineFromGRPC(updateOrderLineResponse);
       });
   }
 

@@ -36,12 +36,13 @@ sudo chmod 755 -R /usr/local/include/google/
 
 ## Get the latest version number of protoc-gen-grpc-web
 VERSION_WEB=$(curl -s https://github.com/grpc/grpc-web/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
-echo version: $VERSION_WEB
-PROTOC_WEB=protoc-gen-grpc-web-$VERSION_WEB-linux-x86_64
+FILE=protoc-gen-grpc-web
+echo $FILE version: $VERSION_WEB
 
 ## Download and install the file
-curl -OL https://github.com/grpc/grpc-web/releases/latest/download/v$VERSION/$PROTOC_WEB
-sudo mv -f -v $PROTOC_WEB /usr/local/bin/protoc-gen-grpc-web
+curl -L https://github.com/grpc/grpc-web/releases/download/$VERSION_WEB/$FILE-$VERSION_WEB-linux-x86_64 -o $FILE
+sudo mv -f -v $FILE /usr/local/bin/
+
 
 ## Assign read and execute permissions
 sudo chmod 755 /usr/local/bin/protoc-gen-grpc-web
