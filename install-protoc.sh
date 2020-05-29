@@ -18,13 +18,13 @@
 
 ## Get the latest version number of protoc
 VERSION=$(curl -s https://github.com/protocolbuffers/protobuf/releases/latest/download 2>&1 | grep -Po [0-9]+\.[0-9]+\.[0-9]+)
-echo version: $VERSION
+echo protoc version: $VERSION
 PROTOC_ZIP=protoc-$VERSION-linux-x86_64.zip
 
 ## Download and install the file
 curl -OL https://github.com/protocolbuffers/protobuf/releases/download/v$VERSION/$PROTOC_ZIP
 sudo unzip -o $PROTOC_ZIP -d /usr/local bin/protoc
-sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/#'
+sudo unzip -o $PROTOC_ZIP -d /usr/local 'include/*'
 rm -f -v $PROTOC_ZIP
 
 ## Assign read and execute permissions
@@ -43,6 +43,5 @@ echo $FILE version: $VERSION_WEB
 curl -L https://github.com/grpc/grpc-web/releases/download/$VERSION_WEB/$FILE-$VERSION_WEB-linux-x86_64 -o $FILE
 sudo mv -f -v $FILE /usr/local/bin/
 
-
 ## Assign read and execute permissions
-sudo chmod 755 /usr/local/bin/protoc-gen-grpc-web
+sudo chmod 755 /usr/local/bin/$FILE

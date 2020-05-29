@@ -1,6 +1,6 @@
 {
   "name": "@adempiere/grpc-pos-client",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "ADempiere POS Client write in Javascript for gRPC service",
   "main": "index.js",
   "scripts": {
@@ -23,11 +23,11 @@
   },
   "homepage": "https://github.com/erpcya/gRPC-POS-Client#readme",
   "dependencies": {
-    "@adempiere/grpc-core-client": "^1.1.0",
-    "google-protobuf": "^3.12.1",
+    "@adempiere/grpc-core-client": "^1.1.2",
+    "google-protobuf": "^3.12.2",
     "grpc": "^1.24.2",
     "grpc-promise": "^1.4.0",
-    "grpc-web": "^1.0.7",
+    "grpc-web": "^1.1.0",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {},

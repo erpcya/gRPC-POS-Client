@@ -7,6 +7,10 @@
 // GENERATED CODE -- DO NOT EDIT!
 
 
+/* eslint-disable */
+// @ts-nocheck
+
+
 
 const grpc = {};
 grpc.web = require('grpc-web');
@@ -1027,6 +1031,86 @@ proto.data.StorePromiseClient.prototype.listOrderLines =
       request,
       metadata || {},
       methodDescriptor_Store_ListOrderLines);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.GetKeyLayoutRequest,
+ *   !proto.data.KeyLayout>}
+ */
+const methodDescriptor_Store_GetKeyLayout = new grpc.web.MethodDescriptor(
+  '/data.Store/GetKeyLayout',
+  grpc.web.MethodType.UNARY,
+  proto.data.GetKeyLayoutRequest,
+  proto.data.KeyLayout,
+  /**
+   * @param {!proto.data.GetKeyLayoutRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.KeyLayout.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.GetKeyLayoutRequest,
+ *   !proto.data.KeyLayout>}
+ */
+const methodInfo_Store_GetKeyLayout = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.KeyLayout,
+  /**
+   * @param {!proto.data.GetKeyLayoutRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.KeyLayout.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.GetKeyLayoutRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.KeyLayout)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.KeyLayout>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.StoreClient.prototype.getKeyLayout =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.Store/GetKeyLayout',
+      request,
+      metadata || {},
+      methodDescriptor_Store_GetKeyLayout,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.GetKeyLayoutRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.KeyLayout>}
+ *     A native promise that resolves to the response
+ */
+proto.data.StorePromiseClient.prototype.getKeyLayout =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.Store/GetKeyLayout',
+      request,
+      metadata || {},
+      methodDescriptor_Store_GetKeyLayout);
 };
 
 
