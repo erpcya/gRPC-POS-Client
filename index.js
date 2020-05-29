@@ -335,6 +335,25 @@ class PointOfSales {
       });
   }
 
+  /**
+   * get Key Layout request
+   * @param {string} keyLayoutUuid
+   */
+  getKeyLayout({ keyLayoutUuid }) {
+    const { GetKeyLayoutRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new GetKeyLayoutRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setKeylayoutuuid(keyLayoutUuid);
+
+    return this.getService().getKeyLayout(request)
+      .then(responseKeyLayout => {
+        const { convertKeyLayoutFromGRPC } = require('./src/convertUtils.js');
+
+        return convertKeyLayoutFromGRPC(responseKeyLayout);
+      });
+  }
+
 }
 
 module.exports = PointOfSales;

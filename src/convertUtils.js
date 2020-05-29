@@ -98,6 +98,7 @@ const convertUtils = {
         getDecimalFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
       const {
+        convertBusinessPartnerFromGRPC,
         convertDocumentTypeFromGRPC,
         convertSalesRepresentativeFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
@@ -121,7 +122,53 @@ const convertUtils = {
         grandTotal: getDecimalFromGRPC(
           orderToConvert.getGrandtotal()
         ),
-        dateOrdered: new Date(orderToConvert.getDateordered())
+        dateOrdered: new Date(orderToConvert.getDateordered()),
+        businessPartner: convertBusinessPartnerFromGRPC(
+          orderToConvert.getBusinesspartner()
+        )
+      };
+    }
+    return undefined;
+  },
+
+  convertKeyFromGRPC(keyToConvert) {
+    if (keyToConvert) {
+      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+
+      return {
+        uuid: keyToConvert.getUuid(),
+        id: keyToConvert.getId(),
+        name: keyToConvert.getName(),
+        description: keyToConvert.getDescription(),
+        subKeyLayoutUuid: keyToConvert.getSubkeylayoutuuid(),
+        color: keyToConvert.getColor(),
+        sequence: keyToConvert.getSequence(),
+        spanX: keyToConvert.getSpanx(),
+        spanY: keyToConvert.getSpany(),
+        productUuid: keyToConvert.getProductuuid(),
+        quantity: getDecimalFromGRPC(
+          keyToConvert.getQuantity()
+        )
+      };
+    }
+    return undefined;
+  },
+
+  convertKeyLayoutFromGRPC(keyLayoutToConvert) {
+    if (keyLayoutToConvert) {
+      return {
+        uuid: keyLayoutToConvert.getUuid(),
+        id: keyLayoutToConvert.getId(),
+        name: keyLayoutToConvert.getName(),
+        description: keyLayoutToConvert.getDescription(),
+        help: keyLayoutToConvert.getHelp(),
+        layoutType: keyLayoutToConvert.getLayouttype(),
+        columns: keyLayoutToConvert.getColumns(),
+        color: keyLayoutToConvert.getColor(),
+        keysList: keyLayoutToConvert.getKeysList()
+          .map(itemKey => {
+            return convertUtils.convertKeyFromGRPC(itemKey)
+          })
       };
     }
     return undefined;
