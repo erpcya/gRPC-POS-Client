@@ -40,7 +40,8 @@ const convertUtils = {
         priceListUuid: pointOfSalesToConvert.getPricelistuuid(),
         currency: convertCurrencyFromGRPC(
           pointOfSalesToConvert.getCurrency()
-        )
+        ),
+        keylayoutuuid: pointOfSalesToConvert.getKeylayoutuuid()
       };
     }
     return undefined;
