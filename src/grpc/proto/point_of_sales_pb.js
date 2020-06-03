@@ -6968,7 +6968,8 @@ proto.data.Key.toObject = function(includeInstance, msg) {
     spanx: jspb.Message.getFieldWithDefault(msg, 8, 0),
     spany: jspb.Message.getFieldWithDefault(msg, 9, 0),
     productuuid: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    quantity: (f = msg.getQuantity()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f)
+    quantity: (f = msg.getQuantity()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
+    resourceuuid: jspb.Message.getFieldWithDefault(msg, 12, "")
   };
 
   if (includeInstance) {
@@ -7049,6 +7050,10 @@ proto.data.Key.deserializeBinaryFromReader = function(msg, reader) {
       var value = new proto_base_data_type_pb.Decimal;
       reader.readMessage(value,proto_base_data_type_pb.Decimal.deserializeBinaryFromReader);
       msg.setQuantity(value);
+      break;
+    case 12:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setResourceuuid(value);
       break;
     default:
       reader.skipField();
@@ -7155,6 +7160,13 @@ proto.data.Key.serializeBinaryToWriter = function(message, writer) {
       11,
       f,
       proto_base_data_type_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getResourceuuid();
+  if (f.length > 0) {
+    writer.writeString(
+      12,
+      f
     );
   }
 };
@@ -7374,6 +7386,24 @@ proto.data.Key.prototype.clearQuantity = function() {
  */
 proto.data.Key.prototype.hasQuantity = function() {
   return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional string resourceUuid = 12;
+ * @return {string}
+ */
+proto.data.Key.prototype.getResourceuuid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.Key} returns this
+ */
+proto.data.Key.prototype.setResourceuuid = function(value) {
+  return jspb.Message.setProto3StringField(this, 12, value);
 };
 
 

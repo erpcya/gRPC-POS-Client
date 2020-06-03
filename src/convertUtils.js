@@ -148,7 +148,8 @@ const convertUtils = {
         productUuid: keyToConvert.getProductuuid(),
         quantity: getDecimalFromGRPC(
           keyToConvert.getQuantity()
-        )
+        ),
+        resourceUuid: keyToConvert.getResourceuuid()
       };
     }
     return undefined;
