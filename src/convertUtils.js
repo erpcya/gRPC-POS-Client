@@ -133,7 +133,10 @@ const convertUtils = {
 
   convertKeyFromGRPC(keyToConvert) {
     if (keyToConvert) {
-      const { getDecimalFromGRPC } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
+      const {
+        getDecimalFromGRPC,
+        convertResourceReferenceFromGRPC
+      } = require('@adempiere/grpc-core-client/src/convertBaseDataType.js');
 
       return {
         uuid: keyToConvert.getUuid(),
@@ -149,7 +152,9 @@ const convertUtils = {
         quantity: getDecimalFromGRPC(
           keyToConvert.getQuantity()
         ),
-        resourceUuid: keyToConvert.getResourceuuid()
+        resourceReference: convertResourceReferenceFromGRPC(
+          keyToConvert.getResourcereference()
+        )
       };
     }
     return undefined;

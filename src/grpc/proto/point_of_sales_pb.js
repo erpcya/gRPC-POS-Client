@@ -6969,7 +6969,7 @@ proto.data.Key.toObject = function(includeInstance, msg) {
     spany: jspb.Message.getFieldWithDefault(msg, 9, 0),
     productuuid: jspb.Message.getFieldWithDefault(msg, 10, ""),
     quantity: (f = msg.getQuantity()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
-    resourceuuid: jspb.Message.getFieldWithDefault(msg, 12, "")
+    resourcereference: (f = msg.getResourcereference()) && proto_base_data_type_pb.ResourceReference.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -7052,8 +7052,9 @@ proto.data.Key.deserializeBinaryFromReader = function(msg, reader) {
       msg.setQuantity(value);
       break;
     case 12:
-      var value = /** @type {string} */ (reader.readString());
-      msg.setResourceuuid(value);
+      var value = new proto_base_data_type_pb.ResourceReference;
+      reader.readMessage(value,proto_base_data_type_pb.ResourceReference.deserializeBinaryFromReader);
+      msg.setResourcereference(value);
       break;
     default:
       reader.skipField();
@@ -7162,11 +7163,12 @@ proto.data.Key.serializeBinaryToWriter = function(message, writer) {
       proto_base_data_type_pb.Decimal.serializeBinaryToWriter
     );
   }
-  f = message.getResourceuuid();
-  if (f.length > 0) {
-    writer.writeString(
+  f = message.getResourcereference();
+  if (f != null) {
+    writer.writeMessage(
       12,
-      f
+      f,
+      proto_base_data_type_pb.ResourceReference.serializeBinaryToWriter
     );
   }
 };
@@ -7390,20 +7392,39 @@ proto.data.Key.prototype.hasQuantity = function() {
 
 
 /**
- * optional string resourceUuid = 12;
- * @return {string}
+ * optional ResourceReference resourceReference = 12;
+ * @return {?proto.data.ResourceReference}
  */
-proto.data.Key.prototype.getResourceuuid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+proto.data.Key.prototype.getResourcereference = function() {
+  return /** @type{?proto.data.ResourceReference} */ (
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.ResourceReference, 12));
 };
 
 
 /**
- * @param {string} value
+ * @param {?proto.data.ResourceReference|undefined} value
+ * @return {!proto.data.Key} returns this
+*/
+proto.data.Key.prototype.setResourcereference = function(value) {
+  return jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
  * @return {!proto.data.Key} returns this
  */
-proto.data.Key.prototype.setResourceuuid = function(value) {
-  return jspb.Message.setProto3StringField(this, 12, value);
+proto.data.Key.prototype.clearResourcereference = function() {
+  return this.setResourcereference(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.Key.prototype.hasResourcereference = function() {
+  return jspb.Message.getField(this, 12) != null;
 };
 
 
