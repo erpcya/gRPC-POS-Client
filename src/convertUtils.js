@@ -183,4 +183,4 @@ const convertUtils = {
 
 }
 
-module.exports = convertUtils
+module.exports = convertUtils;
