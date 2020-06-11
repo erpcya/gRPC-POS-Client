@@ -79,6 +79,12 @@ protoc proto/point_of_sales.proto \
 --js_out=import_style=commonjs:src/grpc \
 --grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
 ```
+
+Or run:
+```Shell
+sh generate-stub.sh
+```
+
 The result is generated on: src/grpc folder
 - `pont_of_sales_pb.js`
 - `pont_of_sales_grpc_web_pb.js`
