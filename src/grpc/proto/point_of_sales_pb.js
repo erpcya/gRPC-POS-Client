@@ -4262,7 +4262,8 @@ proto.data.UpdateOrderLineRequest.toObject = function(includeInstance, msg) {
     description: jspb.Message.getFieldWithDefault(msg, 5, ""),
     quantity: (f = msg.getQuantity()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
     price: (f = msg.getPrice()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
-    discountrate: (f = msg.getDiscountrate()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f)
+    discountrate: (f = msg.getDiscountrate()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
+    isaddquantity: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
   if (includeInstance) {
@@ -4326,6 +4327,10 @@ proto.data.UpdateOrderLineRequest.deserializeBinaryFromReader = function(msg, re
       var value = new proto_base_data_type_pb.Decimal;
       reader.readMessage(value,proto_base_data_type_pb.Decimal.deserializeBinaryFromReader);
       msg.setDiscountrate(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsaddquantity(value);
       break;
     default:
       reader.skipField();
@@ -4400,6 +4405,13 @@ proto.data.UpdateOrderLineRequest.serializeBinaryToWriter = function(message, wr
       8,
       f,
       proto_base_data_type_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getIsaddquantity();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
     );
   }
 };
@@ -4586,6 +4598,24 @@ proto.data.UpdateOrderLineRequest.prototype.clearDiscountrate = function() {
  */
 proto.data.UpdateOrderLineRequest.prototype.hasDiscountrate = function() {
   return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional bool isAddQuantity = 9;
+ * @return {boolean}
+ */
+proto.data.UpdateOrderLineRequest.prototype.getIsaddquantity = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+ */
+proto.data.UpdateOrderLineRequest.prototype.setIsaddquantity = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 

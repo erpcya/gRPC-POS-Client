@@ -22,6 +22,7 @@ option objc_class_prefix = "HLW";
 import "proto/core_functionality.proto";
 import "proto/base_data_type.proto";
 
+// TODO: Change package to 'pos' or 'point_of_sales'
 package data;
 
 //	POS Service used for ADempiere integration
@@ -181,6 +182,7 @@ message UpdateOrderLineRequest {
 	Decimal quantity = 6;
 	Decimal price = 7;
 	Decimal discountRate = 8;
+	bool isAddQuantity = 9;
 }
 
 // Request for get a order
