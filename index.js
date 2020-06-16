@@ -2,6 +2,7 @@
  * Product: ADempiere gRPC Point Of Sales Client                                     *
  * Copyright (C) 2012-2020 E.R.P. Consultores y Asociados, C.A.                      *
  * Contributor(s): Yamel Senih ysenih@erpya.com                                      *
+ * Contributor(s): Edwin Betancourt EdwinBetanc0urt@outlook.com                      *
  * This program is free software: you can redistribute it and/or modify              *
  * it under the terms of the GNU General Public License as published by              *
  * the Free Software Foundation, either version 3 of the License, or                 *
@@ -11,7 +12,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                     *
  * GNU General Public License for more details.                                      *
  * You should have received a copy of the GNU General Public License                 *
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.            *
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.            *
  ************************************************************************************/
 
 class PointOfSales {
@@ -73,6 +74,17 @@ class PointOfSales {
   }
 
   /**
+   * Checks if value is empty. Deep-checks arrays and objects
+   * Note: isEmpty([]) == true, isEmpty({}) == true, isEmpty([{0:false},"",0]) == true, isEmpty({0:1}) == false
+   * @param   {boolean|array|object|number|string|date|map|set|function} value
+   * @returns {boolean}
+   */
+  static isEmptyValue(value) {
+    const { isEmptyValue } = require('@adempiere/grpc-core-client');
+    return isEmptyValue(value);
+  }
+
+  /**
    * Get Point Of Sales Definition
    */
   getPointOfSales({
@@ -88,7 +100,7 @@ class PointOfSales {
       .then(pontOfSalesResponse => {
         const { convertPointOfSalesFromGRPC } = require('./src/convertUtils.js');
 
-        return convertPointOfSalesFromGRPC(posItem);
+        return convertPointOfSalesFromGRPC(pontOfSalesResponse);
       });
   }
 
@@ -128,7 +140,8 @@ class PointOfSales {
   listOrders({
     posUuid,
     pageSize,
-    pageToken
+    pageToken,
+    criteria
   }) {
     const { ListOrdersRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new ListOrdersRequest();
@@ -137,6 +150,13 @@ class PointOfSales {
     request.setPosuuid(posUuid);
     request.setPageSize(pageSize);
     request.setPageToken(pageToken);
+
+    if (!PointOfSales.isEmptyValue(criteria)) {
+      const { convertCriteriaToGRPC } = require('@adempiere/grpc-core-client/src/convertValues.js');
+      const criteriaGRPC = convertCriteriaToGRPC(criteria);
+
+      request.setCriteria(criteriaGRPC);
+    }
     //
     return this.getService().listOrders(request)
       .then(response => {
@@ -213,6 +233,55 @@ class PointOfSales {
         const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
 
         return convertProductPriceFromGRPC(productPriceResponse);
+      });
+  }
+
+  /**
+   * List Product Price
+   */
+  requestListProductPrice({
+    searchValue,
+    priceListUuid,
+    businessPartnerUuid,
+    warehouseUuid,
+    validFrom,
+    criteria,
+    pageSize,
+    pageToken
+  }) {
+    const { ListProductPriceRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new ListProductPriceRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setSearchvalue(searchValue);
+    request.setPricelistuuid(priceListUuid);
+    request.setBusinesspartneruuid(businessPartnerUuid);
+    request.setWarehouseuuid(warehouseUuid);
+    request.setValidfrom(validFrom);
+    request.setPageToken(pageToken);
+    request.setPageSize(pageSize);
+
+    if (!PointOfSales.isEmptyValue(criteria)) {
+      const { convertCriteriaToGRPC } = require('@adempiere/grpc-core-client/src/convertValues.js');
+      const criteriaGRPC = convertCriteriaToGRPC(criteria);
+
+      request.setCriteria(criteriaGRPC);
+    }
+    //
+    return this.getService().listProductPrice(request)
+      .then(listProductPriceResponse => {
+        const { convertProductPriceFromGRPC } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
+
+        const productPricesList = listProductPriceResponse.getProductpricesList()
+          .map(productPrice => {
+            return convertProductPriceFromGRPC(productPrice);
+          });
+
+        return {
+          recordCount: listProductPriceResponse.getRecordcount(),
+          productPricesList,
+          nextPageToken: listProductPriceResponse.getNextPageToken()
+        };
       });
   }
 
