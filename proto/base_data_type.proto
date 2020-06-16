@@ -64,7 +64,7 @@ message Decimal {
 
 // Resource Chunk
 message Resource {
-	bytes data = 1;
+    bytes data = 1;
 }
 
 // Attachment

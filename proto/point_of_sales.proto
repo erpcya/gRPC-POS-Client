@@ -22,6 +22,7 @@ option objc_class_prefix = "HLW";
 import "proto/core_functionality.proto";
 import "proto/base_data_type.proto";
 
+// TODO: Change package to 'pos' or 'point_of_sales'
 package data;
 
 //	POS Service used for ADempiere integration
@@ -81,6 +82,8 @@ message ListOrdersRequest {
 	string posUuid = 2;
 	int32 page_size = 3;
 	string page_token = 4;
+	// Query
+	Criteria criteria = 5;
 }
 
 //	List Order Lines Response
@@ -106,8 +109,10 @@ message ListProductPriceRequest {
 	string businessPartnerUuid = 4;
 	string warehouseUuid = 5;
 	int64 validFrom = 6;
-	int32 page_size = 7;
-	string page_token = 8;
+	// Query
+	Criteria criteria = 7;
+	int32 page_size = 8;
+	string page_token = 9;
 }
 
 // POS from user uuid
@@ -181,6 +186,7 @@ message UpdateOrderLineRequest {
 	Decimal quantity = 6;
 	Decimal price = 7;
 	Decimal discountRate = 8;
+	bool isAddQuantity = 9;
 }
 
 // Request for get a order

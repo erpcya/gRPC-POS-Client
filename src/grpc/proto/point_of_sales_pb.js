@@ -1195,7 +1195,8 @@ proto.data.ListOrdersRequest.toObject = function(includeInstance, msg) {
     clientrequest: (f = msg.getClientrequest()) && proto_core_functionality_pb.ClientRequest.toObject(includeInstance, f),
     posuuid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, "")
+    pageToken: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    criteria: (f = msg.getCriteria()) && proto_base_data_type_pb.Criteria.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -1248,6 +1249,11 @@ proto.data.ListOrdersRequest.deserializeBinaryFromReader = function(msg, reader)
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setPageToken(value);
+      break;
+    case 5:
+      var value = new proto_base_data_type_pb.Criteria;
+      reader.readMessage(value,proto_base_data_type_pb.Criteria.deserializeBinaryFromReader);
+      msg.setCriteria(value);
       break;
     default:
       reader.skipField();
@@ -1305,6 +1311,14 @@ proto.data.ListOrdersRequest.serializeBinaryToWriter = function(message, writer)
     writer.writeString(
       4,
       f
+    );
+  }
+  f = message.getCriteria();
+  if (f != null) {
+    writer.writeMessage(
+      5,
+      f,
+      proto_base_data_type_pb.Criteria.serializeBinaryToWriter
     );
   }
 };
@@ -1398,6 +1412,43 @@ proto.data.ListOrdersRequest.prototype.getPageToken = function() {
  */
 proto.data.ListOrdersRequest.prototype.setPageToken = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional Criteria criteria = 5;
+ * @return {?proto.data.Criteria}
+ */
+proto.data.ListOrdersRequest.prototype.getCriteria = function() {
+  return /** @type{?proto.data.Criteria} */ (
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Criteria, 5));
+};
+
+
+/**
+ * @param {?proto.data.Criteria|undefined} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+*/
+proto.data.ListOrdersRequest.prototype.setCriteria = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.clearCriteria = function() {
+  return this.setCriteria(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.hasCriteria = function() {
+  return jspb.Message.getField(this, 5) != null;
 };
 
 
@@ -1900,8 +1951,9 @@ proto.data.ListProductPriceRequest.toObject = function(includeInstance, msg) {
     businesspartneruuid: jspb.Message.getFieldWithDefault(msg, 4, ""),
     warehouseuuid: jspb.Message.getFieldWithDefault(msg, 5, ""),
     validfrom: jspb.Message.getFieldWithDefault(msg, 6, 0),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 7, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 8, "")
+    criteria: (f = msg.getCriteria()) && proto_base_data_type_pb.Criteria.toObject(includeInstance, f),
+    pageSize: jspb.Message.getFieldWithDefault(msg, 8, 0),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 9, "")
   };
 
   if (includeInstance) {
@@ -1964,10 +2016,15 @@ proto.data.ListProductPriceRequest.deserializeBinaryFromReader = function(msg, r
       msg.setValidfrom(value);
       break;
     case 7:
+      var value = new proto_base_data_type_pb.Criteria;
+      reader.readMessage(value,proto_base_data_type_pb.Criteria.deserializeBinaryFromReader);
+      msg.setCriteria(value);
+      break;
+    case 8:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPageSize(value);
       break;
-    case 8:
+    case 9:
       var value = /** @type {string} */ (reader.readString());
       msg.setPageToken(value);
       break;
@@ -2043,17 +2100,25 @@ proto.data.ListProductPriceRequest.serializeBinaryToWriter = function(message, w
       f
     );
   }
+  f = message.getCriteria();
+  if (f != null) {
+    writer.writeMessage(
+      7,
+      f,
+      proto_base_data_type_pb.Criteria.serializeBinaryToWriter
+    );
+  }
   f = message.getPageSize();
   if (f !== 0) {
     writer.writeInt32(
-      7,
+      8,
       f
     );
   }
   f = message.getPageToken();
   if (f.length > 0) {
     writer.writeString(
-      8,
+      9,
       f
     );
   }
@@ -2188,11 +2253,48 @@ proto.data.ListProductPriceRequest.prototype.setValidfrom = function(value) {
 
 
 /**
- * optional int32 page_size = 7;
+ * optional Criteria criteria = 7;
+ * @return {?proto.data.Criteria}
+ */
+proto.data.ListProductPriceRequest.prototype.getCriteria = function() {
+  return /** @type{?proto.data.Criteria} */ (
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Criteria, 7));
+};
+
+
+/**
+ * @param {?proto.data.Criteria|undefined} value
+ * @return {!proto.data.ListProductPriceRequest} returns this
+*/
+proto.data.ListProductPriceRequest.prototype.setCriteria = function(value) {
+  return jspb.Message.setWrapperField(this, 7, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.ListProductPriceRequest} returns this
+ */
+proto.data.ListProductPriceRequest.prototype.clearCriteria = function() {
+  return this.setCriteria(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ListProductPriceRequest.prototype.hasCriteria = function() {
+  return jspb.Message.getField(this, 7) != null;
+};
+
+
+/**
+ * optional int32 page_size = 8;
  * @return {number}
  */
 proto.data.ListProductPriceRequest.prototype.getPageSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 7, 0));
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 8, 0));
 };
 
 
@@ -2201,16 +2303,16 @@ proto.data.ListProductPriceRequest.prototype.getPageSize = function() {
  * @return {!proto.data.ListProductPriceRequest} returns this
  */
 proto.data.ListProductPriceRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 7, value);
+  return jspb.Message.setProto3IntField(this, 8, value);
 };
 
 
 /**
- * optional string page_token = 8;
+ * optional string page_token = 9;
  * @return {string}
  */
 proto.data.ListProductPriceRequest.prototype.getPageToken = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 8, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 9, ""));
 };
 
 
@@ -2219,7 +2321,7 @@ proto.data.ListProductPriceRequest.prototype.getPageToken = function() {
  * @return {!proto.data.ListProductPriceRequest} returns this
  */
 proto.data.ListProductPriceRequest.prototype.setPageToken = function(value) {
-  return jspb.Message.setProto3StringField(this, 8, value);
+  return jspb.Message.setProto3StringField(this, 9, value);
 };
 
 
@@ -4262,7 +4364,8 @@ proto.data.UpdateOrderLineRequest.toObject = function(includeInstance, msg) {
     description: jspb.Message.getFieldWithDefault(msg, 5, ""),
     quantity: (f = msg.getQuantity()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
     price: (f = msg.getPrice()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
-    discountrate: (f = msg.getDiscountrate()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f)
+    discountrate: (f = msg.getDiscountrate()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
+    isaddquantity: jspb.Message.getBooleanFieldWithDefault(msg, 9, false)
   };
 
   if (includeInstance) {
@@ -4326,6 +4429,10 @@ proto.data.UpdateOrderLineRequest.deserializeBinaryFromReader = function(msg, re
       var value = new proto_base_data_type_pb.Decimal;
       reader.readMessage(value,proto_base_data_type_pb.Decimal.deserializeBinaryFromReader);
       msg.setDiscountrate(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsaddquantity(value);
       break;
     default:
       reader.skipField();
@@ -4400,6 +4507,13 @@ proto.data.UpdateOrderLineRequest.serializeBinaryToWriter = function(message, wr
       8,
       f,
       proto_base_data_type_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getIsaddquantity();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
     );
   }
 };
@@ -4586,6 +4700,24 @@ proto.data.UpdateOrderLineRequest.prototype.clearDiscountrate = function() {
  */
 proto.data.UpdateOrderLineRequest.prototype.hasDiscountrate = function() {
   return jspb.Message.getField(this, 8) != null;
+};
+
+
+/**
+ * optional bool isAddQuantity = 9;
+ * @return {boolean}
+ */
+proto.data.UpdateOrderLineRequest.prototype.getIsaddquantity = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.UpdateOrderLineRequest} returns this
+ */
+proto.data.UpdateOrderLineRequest.prototype.setIsaddquantity = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
 };
 
 
