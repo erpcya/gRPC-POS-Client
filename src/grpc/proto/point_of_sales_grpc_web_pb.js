@@ -18,7 +18,7 @@ grpc.web = require('grpc-web');
 
 var proto_core_functionality_pb = require('@adempiere/grpc-core-client/src/grpc/proto/core_functionality_pb.js')
 
-var proto_base_data_type_pb = require('@adempiere/grpc-core-client/src/grpc/proto/base_data_type_pb.js')
+var proto_base_data_type_pb = require('../proto/base_data_type_pb.js')
 const proto = {};
 proto.data = require('./point_of_sales_pb.js');
 
@@ -717,6 +717,86 @@ proto.data.StorePromiseClient.prototype.deleteOrderLine =
 /**
  * @const
  * @type {!grpc.web.MethodDescriptor<
+ *   !proto.data.UpdateOrderRequest,
+ *   !proto.data.Order>}
+ */
+const methodDescriptor_Store_UpdateOrder = new grpc.web.MethodDescriptor(
+  '/data.Store/UpdateOrder',
+  grpc.web.MethodType.UNARY,
+  proto.data.UpdateOrderRequest,
+  proto.data.Order,
+  /**
+   * @param {!proto.data.UpdateOrderRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.Order.deserializeBinary
+);
+
+
+/**
+ * @const
+ * @type {!grpc.web.AbstractClientBase.MethodInfo<
+ *   !proto.data.UpdateOrderRequest,
+ *   !proto.data.Order>}
+ */
+const methodInfo_Store_UpdateOrder = new grpc.web.AbstractClientBase.MethodInfo(
+  proto.data.Order,
+  /**
+   * @param {!proto.data.UpdateOrderRequest} request
+   * @return {!Uint8Array}
+   */
+  function(request) {
+    return request.serializeBinary();
+  },
+  proto.data.Order.deserializeBinary
+);
+
+
+/**
+ * @param {!proto.data.UpdateOrderRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @param {function(?grpc.web.Error, ?proto.data.Order)}
+ *     callback The callback function(error, response)
+ * @return {!grpc.web.ClientReadableStream<!proto.data.Order>|undefined}
+ *     The XHR Node Readable Stream
+ */
+proto.data.StoreClient.prototype.updateOrder =
+    function(request, metadata, callback) {
+  return this.client_.rpcCall(this.hostname_ +
+      '/data.Store/UpdateOrder',
+      request,
+      metadata || {},
+      methodDescriptor_Store_UpdateOrder,
+      callback);
+};
+
+
+/**
+ * @param {!proto.data.UpdateOrderRequest} request The
+ *     request proto
+ * @param {?Object<string, string>} metadata User defined
+ *     call metadata
+ * @return {!Promise<!proto.data.Order>}
+ *     A native promise that resolves to the response
+ */
+proto.data.StorePromiseClient.prototype.updateOrder =
+    function(request, metadata) {
+  return this.client_.unaryCall(this.hostname_ +
+      '/data.Store/UpdateOrder',
+      request,
+      metadata || {},
+      methodDescriptor_Store_UpdateOrder);
+};
+
+
+/**
+ * @const
+ * @type {!grpc.web.MethodDescriptor<
  *   !proto.data.UpdateOrderLineRequest,
  *   !proto.data.OrderLine>}
  */
@@ -1115,4 +1195,3 @@ proto.data.StorePromiseClient.prototype.getKeyLayout =
 
 
 module.exports = proto.data;
-

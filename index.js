@@ -306,6 +306,31 @@ class PointOfSales {
       });
   }
 
+  updateOrder({
+    orderUuid,
+    posUuid,
+    customerUuid,
+    documentTypeUuid,
+    description
+  }) {
+    const { UpdateOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const request = new UpdateOrderRequest();
+
+    request.setClientrequest(this.getClientRequest());
+    request.setOrderuuid(orderUuid);
+    request.setPosuuid(posUuid);
+    request.setCustomeruuid(customerUuid);
+    request.setDocumenttypeuuid(documentTypeUuid);
+    request.setDescription(description);
+
+    return this.getService().updateOrder(request)
+      .then(updateOrderResponse => {
+        const { convertOrderFromGRPC } = require('./src/convertUtils.js');
+
+        return convertOrderFromGRPC(updateOrderResponse);
+      });
+  }
+
   getOrder({
     orderUuid,
   }) {
