@@ -18,7 +18,7 @@ grpc.web = require('grpc-web');
 
 var proto_core_functionality_pb = require('@adempiere/grpc-core-client/src/grpc/proto/core_functionality_pb.js')
 
-var proto_base_data_type_pb = require('../proto/base_data_type_pb.js')
+var proto_base_data_type_pb = require('@adempiere/grpc-core-client/src/grpc/proto/base_data_type_pb.js')
 const proto = {};
 proto.data = require('./point_of_sales_pb.js');
 
