@@ -14,7 +14,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.            #
 #####################################################################################
 
+OUT_DIR=src/grpc
+
 # Generate Stub to point_of_sales.proto file
 protoc proto/point_of_sales.proto \
---js_out=import_style=commonjs:src/grpc \
---grpc-web_out=import_style=commonjs,mode=grpcwebtext:src/grpc
+    --js_out=import_style=commonjs:$OUT_DIR \
+    --grpc-web_out=import_style=commonjs,mode=grpcwebtext:$OUT_DIR
