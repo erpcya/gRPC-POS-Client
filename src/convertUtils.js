@@ -41,7 +41,7 @@ const convertUtils = {
         currency: convertCurrencyFromGRPC(
           pointOfSalesToConvert.getCurrency()
         ),
-        keylayoutuuid: pointOfSalesToConvert.getKeylayoutuuid()
+        keyLayoutUuid: pointOfSalesToConvert.getKeylayoutuuid()
       };
     }
     return undefined;
