@@ -1,5 +1,5 @@
 #####################################################################################
-# Product: ADempiere Install protoc                                                 #
+# Product: ADempiere Generate Stub                                                  #
 # Copyright (C) 2012-2020 E.R.P. Consultores y Asociados, C.A.                      #
 # Contributor(s): Edwin Betancourt EdwinBetanc0urt@outlook.com                      #
 # This program is free software: you can redistribute it and/or modify              #
