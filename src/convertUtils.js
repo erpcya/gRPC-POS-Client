@@ -1,5 +1,5 @@
 /*************************************************************************************
- * Product: ADempiere gRPC Business Data Client Convert Utils                        *
+ * Product: ADempiere gRPC Point Of Sales Client Convert Utils                       *
  * Copyright (C) 2012-2020 E.R.P. Consultores y Asociados, C.A.                      *
  * Contributor(s): Edwin Betancourt EdwinBetanc0urt@outlook.com                      *
  * This program is free software: you can redistribute it and/or modify              *
@@ -18,9 +18,10 @@ const convertUtils = {
   convertPointOfSalesFromGRPC(pointOfSalesToConvert) {
     if (pointOfSalesToConvert) {
       const {
+        convertBankAccountFromGRPC,
         convertBusinessPartnerFromGRPC,
-        convertCurrencyFromGRPC,
-        convertSalesRepresentativeFromGRPC
+        convertSalesRepresentativeFromGRPC,
+        convertPriceListFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
 
       return {
@@ -31,16 +32,27 @@ const convertUtils = {
         help: pointOfSalesToConvert.getHelp(),
         isModifyPrice: pointOfSalesToConvert.getIsmodifyprice(),
         isPOSRequiredPIN: pointOfSalesToConvert.getIsposrequiredpin(),
+        isAisleSeller: pointOfSalesToConvert.getIsaisleseller(),
+        isSharedPOS: pointOfSalesToConvert.getIssharedpos(),
+        documentType: convertUtils.convertDocumentTypeFromGRPC(
+          pointOfSalesToConvert.getDocumenttype()
+        ),
+        cashBankAccount: convertBankAccountFromGRPC(
+          pointOfSalesToConvert.getCashbankaccount()
+        ),
+        cashTransferBankAccount: convertBankAccountFromGRPC(
+          pointOfSalesToConvert.getCashtransferbankaccount()
+        ),
         salesRepresentative: convertSalesRepresentativeFromGRPC(
           pointOfSalesToConvert.getSalesrepresentative()
         ),
         templateBusinessPartner: convertBusinessPartnerFromGRPC(
           pointOfSalesToConvert.getTemplatebusinesspartner()
         ),
-        priceListUuid: pointOfSalesToConvert.getPricelistuuid(),
-        currency: convertCurrencyFromGRPC(
-          pointOfSalesToConvert.getCurrency()
+        priceList: convertPriceListFromGRPC(
+          pointOfSalesToConvert.getPricelist()
         ),
+        conversionTypeUuid: pointOfSalesToConvert.getConversiontypeuuid(),
         keyLayoutUuid: pointOfSalesToConvert.getKeylayoutuuid()
       };
     }

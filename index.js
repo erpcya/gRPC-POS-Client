@@ -139,15 +139,52 @@ class PointOfSales {
    */
   listOrders({
     posUuid,
+    documentNo,
+    businessPartnerUuid,
+    grandTotal,
+    openAmount,
+    isPaid,
+    isProcessed,
+    isAisleSeller,
+    isInvoiced,
+    dateOrderedFrom,
+    dateOrderedTo,
+    salesRepresentativeUuid,
     pageSize,
     pageToken,
     criteria
   }) {
     const { ListOrdersRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
+    const {
+      getDecimalFromNumber,
+      getLongFromDate
+    } = require('@adempiere/grpc-core-client/src/convertValues.js');
     const request = new ListOrdersRequest();
 
     request.setClientrequest(this.getClientRequest());
     request.setPosuuid(posUuid);
+    request.setDocumentno(documentNo);
+    request.setBusinesspartneruuid(businessPartnerUuid);
+
+    request.setGrandtotal(
+      getDecimalFromNumber(grandTotal)
+    );
+    request.setOpenamount(
+      getDecimalFromNumber(openAmount)
+    );
+
+    request.setIspaid(isPaid);
+    request.setIsprocessed(isProcessed);
+    request.setIsaisleseller(isAisleSeller);
+    request.setIsinvoiced(isInvoiced);
+    request.setSalesrepresentativeuuid(salesRepresentativeUuid);
+    request.setDateorderedfrom(
+      getLongFromDate(dateOrderedFrom)
+    );
+    request.setDateorderedto(
+      getLongFromDate(dateOrderedTo)
+    );
+
     request.setPageSize(pageSize);
     request.setPageToken(pageToken);
 
