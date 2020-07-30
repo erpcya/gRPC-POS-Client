@@ -1216,8 +1216,19 @@ proto.data.ListOrdersRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     clientrequest: (f = msg.getClientrequest()) && proto_core_functionality_pb.ClientRequest.toObject(includeInstance, f),
     posuuid: jspb.Message.getFieldWithDefault(msg, 2, ""),
-    pageSize: jspb.Message.getFieldWithDefault(msg, 3, 0),
-    pageToken: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    documentno: jspb.Message.getFieldWithDefault(msg, 3, ""),
+    businesspartneruuid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    grandtotal: (f = msg.getGrandtotal()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
+    openamount: (f = msg.getOpenamount()) && proto_base_data_type_pb.Decimal.toObject(includeInstance, f),
+    ispaid: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    isprocessed: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
+    isaisleseller: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+    isinvoiced: jspb.Message.getBooleanFieldWithDefault(msg, 10, false),
+    dateorderedfrom: jspb.Message.getFieldWithDefault(msg, 11, 0),
+    dateorderedto: jspb.Message.getFieldWithDefault(msg, 12, 0),
+    salesrepresentativeuuid: jspb.Message.getFieldWithDefault(msg, 13, ""),
+    pageSize: jspb.Message.getFieldWithDefault(msg, 14, 0),
+    pageToken: jspb.Message.getFieldWithDefault(msg, 15, ""),
     criteria: (f = msg.getCriteria()) && proto_base_data_type_pb.Criteria.toObject(includeInstance, f)
   };
 
@@ -1265,14 +1276,60 @@ proto.data.ListOrdersRequest.deserializeBinaryFromReader = function(msg, reader)
       msg.setPosuuid(value);
       break;
     case 3:
-      var value = /** @type {number} */ (reader.readInt32());
-      msg.setPageSize(value);
+      var value = /** @type {string} */ (reader.readString());
+      msg.setDocumentno(value);
       break;
     case 4:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPageToken(value);
+      msg.setBusinesspartneruuid(value);
       break;
     case 5:
+      var value = new proto_base_data_type_pb.Decimal;
+      reader.readMessage(value,proto_base_data_type_pb.Decimal.deserializeBinaryFromReader);
+      msg.setGrandtotal(value);
+      break;
+    case 6:
+      var value = new proto_base_data_type_pb.Decimal;
+      reader.readMessage(value,proto_base_data_type_pb.Decimal.deserializeBinaryFromReader);
+      msg.setOpenamount(value);
+      break;
+    case 7:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIspaid(value);
+      break;
+    case 8:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsprocessed(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsaisleseller(value);
+      break;
+    case 10:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsinvoiced(value);
+      break;
+    case 11:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setDateorderedfrom(value);
+      break;
+    case 12:
+      var value = /** @type {number} */ (reader.readInt64());
+      msg.setDateorderedto(value);
+      break;
+    case 13:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSalesrepresentativeuuid(value);
+      break;
+    case 14:
+      var value = /** @type {number} */ (reader.readInt32());
+      msg.setPageSize(value);
+      break;
+    case 15:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setPageToken(value);
+      break;
+    case 16:
       var value = new proto_base_data_type_pb.Criteria;
       reader.readMessage(value,proto_base_data_type_pb.Criteria.deserializeBinaryFromReader);
       msg.setCriteria(value);
@@ -1321,24 +1378,103 @@ proto.data.ListOrdersRequest.serializeBinaryToWriter = function(message, writer)
       f
     );
   }
-  f = message.getPageSize();
-  if (f !== 0) {
-    writer.writeInt32(
+  f = message.getDocumentno();
+  if (f.length > 0) {
+    writer.writeString(
       3,
       f
     );
   }
-  f = message.getPageToken();
+  f = message.getBusinesspartneruuid();
   if (f.length > 0) {
     writer.writeString(
       4,
       f
     );
   }
-  f = message.getCriteria();
+  f = message.getGrandtotal();
   if (f != null) {
     writer.writeMessage(
       5,
+      f,
+      proto_base_data_type_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getOpenamount();
+  if (f != null) {
+    writer.writeMessage(
+      6,
+      f,
+      proto_base_data_type_pb.Decimal.serializeBinaryToWriter
+    );
+  }
+  f = message.getIspaid();
+  if (f) {
+    writer.writeBool(
+      7,
+      f
+    );
+  }
+  f = message.getIsprocessed();
+  if (f) {
+    writer.writeBool(
+      8,
+      f
+    );
+  }
+  f = message.getIsaisleseller();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
+    );
+  }
+  f = message.getIsinvoiced();
+  if (f) {
+    writer.writeBool(
+      10,
+      f
+    );
+  }
+  f = message.getDateorderedfrom();
+  if (f !== 0) {
+    writer.writeInt64(
+      11,
+      f
+    );
+  }
+  f = message.getDateorderedto();
+  if (f !== 0) {
+    writer.writeInt64(
+      12,
+      f
+    );
+  }
+  f = message.getSalesrepresentativeuuid();
+  if (f.length > 0) {
+    writer.writeString(
+      13,
+      f
+    );
+  }
+  f = message.getPageSize();
+  if (f !== 0) {
+    writer.writeInt32(
+      14,
+      f
+    );
+  }
+  f = message.getPageToken();
+  if (f.length > 0) {
+    writer.writeString(
+      15,
+      f
+    );
+  }
+  f = message.getCriteria();
+  if (f != null) {
+    writer.writeMessage(
+      16,
       f,
       proto_base_data_type_pb.Criteria.serializeBinaryToWriter
     );
@@ -1402,28 +1538,28 @@ proto.data.ListOrdersRequest.prototype.setPosuuid = function(value) {
 
 
 /**
- * optional int32 page_size = 3;
- * @return {number}
- */
-proto.data.ListOrdersRequest.prototype.getPageSize = function() {
-  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 3, 0));
-};
-
-
-/**
- * @param {number} value
- * @return {!proto.data.ListOrdersRequest} returns this
- */
-proto.data.ListOrdersRequest.prototype.setPageSize = function(value) {
-  return jspb.Message.setProto3IntField(this, 3, value);
-};
-
-
-/**
- * optional string page_token = 4;
+ * optional string documentNo = 3;
  * @return {string}
  */
-proto.data.ListOrdersRequest.prototype.getPageToken = function() {
+proto.data.ListOrdersRequest.prototype.getDocumentno = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 3, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setDocumentno = function(value) {
+  return jspb.Message.setProto3StringField(this, 3, value);
+};
+
+
+/**
+ * optional string businessPartnerUuid = 4;
+ * @return {string}
+ */
+proto.data.ListOrdersRequest.prototype.getBusinesspartneruuid = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 4, ""));
 };
 
@@ -1432,18 +1568,254 @@ proto.data.ListOrdersRequest.prototype.getPageToken = function() {
  * @param {string} value
  * @return {!proto.data.ListOrdersRequest} returns this
  */
-proto.data.ListOrdersRequest.prototype.setPageToken = function(value) {
+proto.data.ListOrdersRequest.prototype.setBusinesspartneruuid = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
 };
 
 
 /**
- * optional Criteria criteria = 5;
+ * optional Decimal grandTotal = 5;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ListOrdersRequest.prototype.getGrandtotal = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Decimal, 5));
+};
+
+
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+*/
+proto.data.ListOrdersRequest.prototype.setGrandtotal = function(value) {
+  return jspb.Message.setWrapperField(this, 5, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.clearGrandtotal = function() {
+  return this.setGrandtotal(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.hasGrandtotal = function() {
+  return jspb.Message.getField(this, 5) != null;
+};
+
+
+/**
+ * optional Decimal openAmount = 6;
+ * @return {?proto.data.Decimal}
+ */
+proto.data.ListOrdersRequest.prototype.getOpenamount = function() {
+  return /** @type{?proto.data.Decimal} */ (
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Decimal, 6));
+};
+
+
+/**
+ * @param {?proto.data.Decimal|undefined} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+*/
+proto.data.ListOrdersRequest.prototype.setOpenamount = function(value) {
+  return jspb.Message.setWrapperField(this, 6, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.clearOpenamount = function() {
+  return this.setOpenamount(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.hasOpenamount = function() {
+  return jspb.Message.getField(this, 6) != null;
+};
+
+
+/**
+ * optional bool isPaid = 7;
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.getIspaid = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 7, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setIspaid = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 7, value);
+};
+
+
+/**
+ * optional bool isProcessed = 8;
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.getIsprocessed = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setIsprocessed = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 8, value);
+};
+
+
+/**
+ * optional bool isAisleSeller = 9;
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.getIsaisleseller = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setIsaisleseller = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional bool isInvoiced = 10;
+ * @return {boolean}
+ */
+proto.data.ListOrdersRequest.prototype.getIsinvoiced = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 10, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setIsinvoiced = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 10, value);
+};
+
+
+/**
+ * optional int64 dateOrderedFrom = 11;
+ * @return {number}
+ */
+proto.data.ListOrdersRequest.prototype.getDateorderedfrom = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 11, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setDateorderedfrom = function(value) {
+  return jspb.Message.setProto3IntField(this, 11, value);
+};
+
+
+/**
+ * optional int64 dateOrderedTo = 12;
+ * @return {number}
+ */
+proto.data.ListOrdersRequest.prototype.getDateorderedto = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 12, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setDateorderedto = function(value) {
+  return jspb.Message.setProto3IntField(this, 12, value);
+};
+
+
+/**
+ * optional string salesRepresentativeUuid = 13;
+ * @return {string}
+ */
+proto.data.ListOrdersRequest.prototype.getSalesrepresentativeuuid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 13, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setSalesrepresentativeuuid = function(value) {
+  return jspb.Message.setProto3StringField(this, 13, value);
+};
+
+
+/**
+ * optional int32 page_size = 14;
+ * @return {number}
+ */
+proto.data.ListOrdersRequest.prototype.getPageSize = function() {
+  return /** @type {number} */ (jspb.Message.getFieldWithDefault(this, 14, 0));
+};
+
+
+/**
+ * @param {number} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setPageSize = function(value) {
+  return jspb.Message.setProto3IntField(this, 14, value);
+};
+
+
+/**
+ * optional string page_token = 15;
+ * @return {string}
+ */
+proto.data.ListOrdersRequest.prototype.getPageToken = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 15, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.ListOrdersRequest} returns this
+ */
+proto.data.ListOrdersRequest.prototype.setPageToken = function(value) {
+  return jspb.Message.setProto3StringField(this, 15, value);
+};
+
+
+/**
+ * optional Criteria criteria = 16;
  * @return {?proto.data.Criteria}
  */
 proto.data.ListOrdersRequest.prototype.getCriteria = function() {
   return /** @type{?proto.data.Criteria} */ (
-    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Criteria, 5));
+    jspb.Message.getWrapperField(this, proto_base_data_type_pb.Criteria, 16));
 };
 
 
@@ -1452,7 +1824,7 @@ proto.data.ListOrdersRequest.prototype.getCriteria = function() {
  * @return {!proto.data.ListOrdersRequest} returns this
 */
 proto.data.ListOrdersRequest.prototype.setCriteria = function(value) {
-  return jspb.Message.setWrapperField(this, 5, value);
+  return jspb.Message.setWrapperField(this, 16, value);
 };
 
 
@@ -1470,7 +1842,7 @@ proto.data.ListOrdersRequest.prototype.clearCriteria = function() {
  * @return {boolean}
  */
 proto.data.ListOrdersRequest.prototype.hasCriteria = function() {
-  return jspb.Message.getField(this, 5) != null;
+  return jspb.Message.getField(this, 16) != null;
 };
 
 
@@ -2808,11 +3180,16 @@ proto.data.PointOfSales.toObject = function(includeInstance, msg) {
     help: jspb.Message.getFieldWithDefault(msg, 5, ""),
     ismodifyprice: jspb.Message.getBooleanFieldWithDefault(msg, 6, false),
     isposrequiredpin: jspb.Message.getBooleanFieldWithDefault(msg, 7, false),
+    isaisleseller: jspb.Message.getBooleanFieldWithDefault(msg, 8, false),
+    issharedpos: jspb.Message.getBooleanFieldWithDefault(msg, 9, false),
+    documenttype: (f = msg.getDocumenttype()) && proto_core_functionality_pb.DocumentType.toObject(includeInstance, f),
+    cashbankaccount: (f = msg.getCashbankaccount()) && proto_core_functionality_pb.BankAccount.toObject(includeInstance, f),
+    cashtransferbankaccount: (f = msg.getCashtransferbankaccount()) && proto_core_functionality_pb.BankAccount.toObject(includeInstance, f),
     salesrepresentative: (f = msg.getSalesrepresentative()) && proto_core_functionality_pb.SalesRepresentative.toObject(includeInstance, f),
     templatebusinesspartner: (f = msg.getTemplatebusinesspartner()) && proto_core_functionality_pb.BusinessPartner.toObject(includeInstance, f),
-    pricelistuuid: jspb.Message.getFieldWithDefault(msg, 10, ""),
-    currency: (f = msg.getCurrency()) && proto_core_functionality_pb.Currency.toObject(includeInstance, f),
-    keylayoutuuid: jspb.Message.getFieldWithDefault(msg, 12, "")
+    pricelist: (f = msg.getPricelist()) && proto_core_functionality_pb.PriceList.toObject(includeInstance, f),
+    conversiontypeuuid: jspb.Message.getFieldWithDefault(msg, 16, ""),
+    keylayoutuuid: jspb.Message.getFieldWithDefault(msg, 17, "")
   };
 
   if (includeInstance) {
@@ -2878,25 +3255,48 @@ proto.data.PointOfSales.deserializeBinaryFromReader = function(msg, reader) {
       msg.setIsposrequiredpin(value);
       break;
     case 8:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIsaisleseller(value);
+      break;
+    case 9:
+      var value = /** @type {boolean} */ (reader.readBool());
+      msg.setIssharedpos(value);
+      break;
+    case 10:
+      var value = new proto_core_functionality_pb.DocumentType;
+      reader.readMessage(value,proto_core_functionality_pb.DocumentType.deserializeBinaryFromReader);
+      msg.setDocumenttype(value);
+      break;
+    case 11:
+      var value = new proto_core_functionality_pb.BankAccount;
+      reader.readMessage(value,proto_core_functionality_pb.BankAccount.deserializeBinaryFromReader);
+      msg.setCashbankaccount(value);
+      break;
+    case 12:
+      var value = new proto_core_functionality_pb.BankAccount;
+      reader.readMessage(value,proto_core_functionality_pb.BankAccount.deserializeBinaryFromReader);
+      msg.setCashtransferbankaccount(value);
+      break;
+    case 13:
       var value = new proto_core_functionality_pb.SalesRepresentative;
       reader.readMessage(value,proto_core_functionality_pb.SalesRepresentative.deserializeBinaryFromReader);
       msg.setSalesrepresentative(value);
       break;
-    case 9:
+    case 14:
       var value = new proto_core_functionality_pb.BusinessPartner;
       reader.readMessage(value,proto_core_functionality_pb.BusinessPartner.deserializeBinaryFromReader);
       msg.setTemplatebusinesspartner(value);
       break;
-    case 10:
+    case 15:
+      var value = new proto_core_functionality_pb.PriceList;
+      reader.readMessage(value,proto_core_functionality_pb.PriceList.deserializeBinaryFromReader);
+      msg.setPricelist(value);
+      break;
+    case 16:
       var value = /** @type {string} */ (reader.readString());
-      msg.setPricelistuuid(value);
+      msg.setConversiontypeuuid(value);
       break;
-    case 11:
-      var value = new proto_core_functionality_pb.Currency;
-      reader.readMessage(value,proto_core_functionality_pb.Currency.deserializeBinaryFromReader);
-      msg.setCurrency(value);
-      break;
-    case 12:
+    case 17:
       var value = /** @type {string} */ (reader.readString());
       msg.setKeylayoutuuid(value);
       break;
@@ -2978,10 +3378,48 @@ proto.data.PointOfSales.serializeBinaryToWriter = function(message, writer) {
       f
     );
   }
+  f = message.getIsaisleseller();
+  if (f) {
+    writer.writeBool(
+      8,
+      f
+    );
+  }
+  f = message.getIssharedpos();
+  if (f) {
+    writer.writeBool(
+      9,
+      f
+    );
+  }
+  f = message.getDocumenttype();
+  if (f != null) {
+    writer.writeMessage(
+      10,
+      f,
+      proto_core_functionality_pb.DocumentType.serializeBinaryToWriter
+    );
+  }
+  f = message.getCashbankaccount();
+  if (f != null) {
+    writer.writeMessage(
+      11,
+      f,
+      proto_core_functionality_pb.BankAccount.serializeBinaryToWriter
+    );
+  }
+  f = message.getCashtransferbankaccount();
+  if (f != null) {
+    writer.writeMessage(
+      12,
+      f,
+      proto_core_functionality_pb.BankAccount.serializeBinaryToWriter
+    );
+  }
   f = message.getSalesrepresentative();
   if (f != null) {
     writer.writeMessage(
-      8,
+      13,
       f,
       proto_core_functionality_pb.SalesRepresentative.serializeBinaryToWriter
     );
@@ -2989,30 +3427,30 @@ proto.data.PointOfSales.serializeBinaryToWriter = function(message, writer) {
   f = message.getTemplatebusinesspartner();
   if (f != null) {
     writer.writeMessage(
-      9,
+      14,
       f,
       proto_core_functionality_pb.BusinessPartner.serializeBinaryToWriter
     );
   }
-  f = message.getPricelistuuid();
-  if (f.length > 0) {
-    writer.writeString(
-      10,
-      f
-    );
-  }
-  f = message.getCurrency();
+  f = message.getPricelist();
   if (f != null) {
     writer.writeMessage(
-      11,
+      15,
       f,
-      proto_core_functionality_pb.Currency.serializeBinaryToWriter
+      proto_core_functionality_pb.PriceList.serializeBinaryToWriter
+    );
+  }
+  f = message.getConversiontypeuuid();
+  if (f.length > 0) {
+    writer.writeString(
+      16,
+      f
     );
   }
   f = message.getKeylayoutuuid();
   if (f.length > 0) {
     writer.writeString(
-      12,
+      17,
       f
     );
   }
@@ -3146,12 +3584,159 @@ proto.data.PointOfSales.prototype.setIsposrequiredpin = function(value) {
 
 
 /**
- * optional SalesRepresentative salesRepresentative = 8;
+ * optional bool isAisleSeller = 8;
+ * @return {boolean}
+ */
+proto.data.PointOfSales.prototype.getIsaisleseller = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 8, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.setIsaisleseller = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 8, value);
+};
+
+
+/**
+ * optional bool isSharedPOS = 9;
+ * @return {boolean}
+ */
+proto.data.PointOfSales.prototype.getIssharedpos = function() {
+  return /** @type {boolean} */ (jspb.Message.getBooleanFieldWithDefault(this, 9, false));
+};
+
+
+/**
+ * @param {boolean} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.setIssharedpos = function(value) {
+  return jspb.Message.setProto3BooleanField(this, 9, value);
+};
+
+
+/**
+ * optional DocumentType documentType = 10;
+ * @return {?proto.data.DocumentType}
+ */
+proto.data.PointOfSales.prototype.getDocumenttype = function() {
+  return /** @type{?proto.data.DocumentType} */ (
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.DocumentType, 10));
+};
+
+
+/**
+ * @param {?proto.data.DocumentType|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
+proto.data.PointOfSales.prototype.setDocumenttype = function(value) {
+  return jspb.Message.setWrapperField(this, 10, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.clearDocumenttype = function() {
+  return this.setDocumenttype(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.PointOfSales.prototype.hasDocumenttype = function() {
+  return jspb.Message.getField(this, 10) != null;
+};
+
+
+/**
+ * optional BankAccount cashBankAccount = 11;
+ * @return {?proto.data.BankAccount}
+ */
+proto.data.PointOfSales.prototype.getCashbankaccount = function() {
+  return /** @type{?proto.data.BankAccount} */ (
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.BankAccount, 11));
+};
+
+
+/**
+ * @param {?proto.data.BankAccount|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
+proto.data.PointOfSales.prototype.setCashbankaccount = function(value) {
+  return jspb.Message.setWrapperField(this, 11, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.clearCashbankaccount = function() {
+  return this.setCashbankaccount(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.PointOfSales.prototype.hasCashbankaccount = function() {
+  return jspb.Message.getField(this, 11) != null;
+};
+
+
+/**
+ * optional BankAccount cashTransferBankAccount = 12;
+ * @return {?proto.data.BankAccount}
+ */
+proto.data.PointOfSales.prototype.getCashtransferbankaccount = function() {
+  return /** @type{?proto.data.BankAccount} */ (
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.BankAccount, 12));
+};
+
+
+/**
+ * @param {?proto.data.BankAccount|undefined} value
+ * @return {!proto.data.PointOfSales} returns this
+*/
+proto.data.PointOfSales.prototype.setCashtransferbankaccount = function(value) {
+  return jspb.Message.setWrapperField(this, 12, value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.clearCashtransferbankaccount = function() {
+  return this.setCashtransferbankaccount(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.data.PointOfSales.prototype.hasCashtransferbankaccount = function() {
+  return jspb.Message.getField(this, 12) != null;
+};
+
+
+/**
+ * optional SalesRepresentative salesRepresentative = 13;
  * @return {?proto.data.SalesRepresentative}
  */
 proto.data.PointOfSales.prototype.getSalesrepresentative = function() {
   return /** @type{?proto.data.SalesRepresentative} */ (
-    jspb.Message.getWrapperField(this, proto_core_functionality_pb.SalesRepresentative, 8));
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.SalesRepresentative, 13));
 };
 
 
@@ -3160,7 +3745,7 @@ proto.data.PointOfSales.prototype.getSalesrepresentative = function() {
  * @return {!proto.data.PointOfSales} returns this
 */
 proto.data.PointOfSales.prototype.setSalesrepresentative = function(value) {
-  return jspb.Message.setWrapperField(this, 8, value);
+  return jspb.Message.setWrapperField(this, 13, value);
 };
 
 
@@ -3178,17 +3763,17 @@ proto.data.PointOfSales.prototype.clearSalesrepresentative = function() {
  * @return {boolean}
  */
 proto.data.PointOfSales.prototype.hasSalesrepresentative = function() {
-  return jspb.Message.getField(this, 8) != null;
+  return jspb.Message.getField(this, 13) != null;
 };
 
 
 /**
- * optional BusinessPartner templateBusinessPartner = 9;
+ * optional BusinessPartner templateBusinessPartner = 14;
  * @return {?proto.data.BusinessPartner}
  */
 proto.data.PointOfSales.prototype.getTemplatebusinesspartner = function() {
   return /** @type{?proto.data.BusinessPartner} */ (
-    jspb.Message.getWrapperField(this, proto_core_functionality_pb.BusinessPartner, 9));
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.BusinessPartner, 14));
 };
 
 
@@ -3197,7 +3782,7 @@ proto.data.PointOfSales.prototype.getTemplatebusinesspartner = function() {
  * @return {!proto.data.PointOfSales} returns this
 */
 proto.data.PointOfSales.prototype.setTemplatebusinesspartner = function(value) {
-  return jspb.Message.setWrapperField(this, 9, value);
+  return jspb.Message.setWrapperField(this, 14, value);
 };
 
 
@@ -3215,44 +3800,26 @@ proto.data.PointOfSales.prototype.clearTemplatebusinesspartner = function() {
  * @return {boolean}
  */
 proto.data.PointOfSales.prototype.hasTemplatebusinesspartner = function() {
-  return jspb.Message.getField(this, 9) != null;
+  return jspb.Message.getField(this, 14) != null;
 };
 
 
 /**
- * optional string priceListUuid = 10;
- * @return {string}
+ * optional PriceList priceList = 15;
+ * @return {?proto.data.PriceList}
  */
-proto.data.PointOfSales.prototype.getPricelistuuid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
+proto.data.PointOfSales.prototype.getPricelist = function() {
+  return /** @type{?proto.data.PriceList} */ (
+    jspb.Message.getWrapperField(this, proto_core_functionality_pb.PriceList, 15));
 };
 
 
 /**
- * @param {string} value
- * @return {!proto.data.PointOfSales} returns this
- */
-proto.data.PointOfSales.prototype.setPricelistuuid = function(value) {
-  return jspb.Message.setProto3StringField(this, 10, value);
-};
-
-
-/**
- * optional Currency currency = 11;
- * @return {?proto.data.Currency}
- */
-proto.data.PointOfSales.prototype.getCurrency = function() {
-  return /** @type{?proto.data.Currency} */ (
-    jspb.Message.getWrapperField(this, proto_core_functionality_pb.Currency, 11));
-};
-
-
-/**
- * @param {?proto.data.Currency|undefined} value
+ * @param {?proto.data.PriceList|undefined} value
  * @return {!proto.data.PointOfSales} returns this
 */
-proto.data.PointOfSales.prototype.setCurrency = function(value) {
-  return jspb.Message.setWrapperField(this, 11, value);
+proto.data.PointOfSales.prototype.setPricelist = function(value) {
+  return jspb.Message.setWrapperField(this, 15, value);
 };
 
 
@@ -3260,8 +3827,8 @@ proto.data.PointOfSales.prototype.setCurrency = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.data.PointOfSales} returns this
  */
-proto.data.PointOfSales.prototype.clearCurrency = function() {
-  return this.setCurrency(undefined);
+proto.data.PointOfSales.prototype.clearPricelist = function() {
+  return this.setPricelist(undefined);
 };
 
 
@@ -3269,17 +3836,35 @@ proto.data.PointOfSales.prototype.clearCurrency = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.data.PointOfSales.prototype.hasCurrency = function() {
-  return jspb.Message.getField(this, 11) != null;
+proto.data.PointOfSales.prototype.hasPricelist = function() {
+  return jspb.Message.getField(this, 15) != null;
 };
 
 
 /**
- * optional string keyLayoutUuid = 12;
+ * optional string conversionTypeUuid = 16;
+ * @return {string}
+ */
+proto.data.PointOfSales.prototype.getConversiontypeuuid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 16, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.PointOfSales} returns this
+ */
+proto.data.PointOfSales.prototype.setConversiontypeuuid = function(value) {
+  return jspb.Message.setProto3StringField(this, 16, value);
+};
+
+
+/**
+ * optional string keyLayoutUuid = 17;
  * @return {string}
  */
 proto.data.PointOfSales.prototype.getKeylayoutuuid = function() {
-  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 12, ""));
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 17, ""));
 };
 
 
@@ -3288,7 +3873,7 @@ proto.data.PointOfSales.prototype.getKeylayoutuuid = function() {
  * @return {!proto.data.PointOfSales} returns this
  */
 proto.data.PointOfSales.prototype.setKeylayoutuuid = function(value) {
-  return jspb.Message.setProto3StringField(this, 12, value);
+  return jspb.Message.setProto3StringField(this, 17, value);
 };
 
 
