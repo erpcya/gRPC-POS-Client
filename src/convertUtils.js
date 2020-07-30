@@ -20,6 +20,7 @@ const convertUtils = {
       const {
         convertBankAccountFromGRPC,
         convertBusinessPartnerFromGRPC,
+        convertDocumentTypeFromGRPC,
         convertSalesRepresentativeFromGRPC,
         convertPriceListFromGRPC
       } = require('@adempiere/grpc-core-client/src/convertCoreFunctionality.js');
@@ -34,7 +35,7 @@ const convertUtils = {
         isPOSRequiredPIN: pointOfSalesToConvert.getIsposrequiredpin(),
         isAisleSeller: pointOfSalesToConvert.getIsaisleseller(),
         isSharedPOS: pointOfSalesToConvert.getIssharedpos(),
-        documentType: convertUtils.convertDocumentTypeFromGRPC(
+        documentType: convertDocumentTypeFromGRPC(
           pointOfSalesToConvert.getDocumenttype()
         ),
         cashBankAccount: convertBankAccountFromGRPC(
