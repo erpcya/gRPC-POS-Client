@@ -1195,3 +1195,4 @@ proto.data.StorePromiseClient.prototype.getKeyLayout =
 
 
 module.exports = proto.data;
+
