@@ -142,7 +142,7 @@ proto.data.StoreClient.prototype.getPointOfSales =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.PointOfSales>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.getPointOfSales =
     function(request, metadata) {
@@ -222,7 +222,7 @@ proto.data.StoreClient.prototype.listPointOfSales =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListPointOfSalesResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.listPointOfSales =
     function(request, metadata) {
@@ -302,7 +302,7 @@ proto.data.StoreClient.prototype.getProductPrice =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ProductPrice>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.getProductPrice =
     function(request, metadata) {
@@ -382,7 +382,7 @@ proto.data.StoreClient.prototype.listProductPrice =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListProductPriceResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.listProductPrice =
     function(request, metadata) {
@@ -462,7 +462,7 @@ proto.data.StoreClient.prototype.createOrder =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Order>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.createOrder =
     function(request, metadata) {
@@ -542,7 +542,7 @@ proto.data.StoreClient.prototype.deleteOrder =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Empty>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.deleteOrder =
     function(request, metadata) {
@@ -622,7 +622,7 @@ proto.data.StoreClient.prototype.createOrderLine =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.OrderLine>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.createOrderLine =
     function(request, metadata) {
@@ -702,7 +702,7 @@ proto.data.StoreClient.prototype.deleteOrderLine =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Empty>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.deleteOrderLine =
     function(request, metadata) {
@@ -782,7 +782,7 @@ proto.data.StoreClient.prototype.updateOrder =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Order>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.updateOrder =
     function(request, metadata) {
@@ -862,7 +862,7 @@ proto.data.StoreClient.prototype.updateOrderLine =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.OrderLine>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.updateOrderLine =
     function(request, metadata) {
@@ -942,7 +942,7 @@ proto.data.StoreClient.prototype.getOrder =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.Order>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.getOrder =
     function(request, metadata) {
@@ -1022,7 +1022,7 @@ proto.data.StoreClient.prototype.listOrders =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListOrdersResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.listOrders =
     function(request, metadata) {
@@ -1102,7 +1102,7 @@ proto.data.StoreClient.prototype.listOrderLines =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.ListOrderLinesResponse>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.listOrderLines =
     function(request, metadata) {
@@ -1182,7 +1182,7 @@ proto.data.StoreClient.prototype.getKeyLayout =
  * @param {?Object<string, string>} metadata User defined
  *     call metadata
  * @return {!Promise<!proto.data.KeyLayout>}
- *     A native promise that resolves to the response
+ *     Promise that resolves to the response
  */
 proto.data.StorePromiseClient.prototype.getKeyLayout =
     function(request, metadata) {
@@ -1195,4 +1195,3 @@ proto.data.StorePromiseClient.prototype.getKeyLayout =
 
 
 module.exports = proto.data;
-

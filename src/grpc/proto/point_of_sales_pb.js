@@ -3912,7 +3912,8 @@ proto.data.CreateOrderRequest.toObject = function(includeInstance, msg) {
     clientrequest: (f = msg.getClientrequest()) && proto_core_functionality_pb.ClientRequest.toObject(includeInstance, f),
     posuuid: jspb.Message.getFieldWithDefault(msg, 2, ""),
     customeruuid: jspb.Message.getFieldWithDefault(msg, 3, ""),
-    documenttypeuuid: jspb.Message.getFieldWithDefault(msg, 4, "")
+    documenttypeuuid: jspb.Message.getFieldWithDefault(msg, 4, ""),
+    salesrepresentativeuuid: jspb.Message.getFieldWithDefault(msg, 5, "")
   };
 
   if (includeInstance) {
@@ -3965,6 +3966,10 @@ proto.data.CreateOrderRequest.deserializeBinaryFromReader = function(msg, reader
     case 4:
       var value = /** @type {string} */ (reader.readString());
       msg.setDocumenttypeuuid(value);
+      break;
+    case 5:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setSalesrepresentativeuuid(value);
       break;
     default:
       reader.skipField();
@@ -4021,6 +4026,13 @@ proto.data.CreateOrderRequest.serializeBinaryToWriter = function(message, writer
   if (f.length > 0) {
     writer.writeString(
       4,
+      f
+    );
+  }
+  f = message.getSalesrepresentativeuuid();
+  if (f.length > 0) {
+    writer.writeString(
+      5,
       f
     );
   }
@@ -4115,6 +4127,24 @@ proto.data.CreateOrderRequest.prototype.getDocumenttypeuuid = function() {
  */
 proto.data.CreateOrderRequest.prototype.setDocumenttypeuuid = function(value) {
   return jspb.Message.setProto3StringField(this, 4, value);
+};
+
+
+/**
+ * optional string salesRepresentativeUuid = 5;
+ * @return {string}
+ */
+proto.data.CreateOrderRequest.prototype.getSalesrepresentativeuuid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 5, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.data.CreateOrderRequest} returns this
+ */
+proto.data.CreateOrderRequest.prototype.setSalesrepresentativeuuid = function(value) {
+  return jspb.Message.setProto3StringField(this, 5, value);
 };
 
 
