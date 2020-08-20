@@ -322,10 +322,11 @@ class PointOfSales {
       });
   }
 
-  createOrder({
+  requestCreateOrder({
     posUuid,
     customerUuid,
     documentTypeUuid,
+    salesRepresentativeUuid
   }) {
     const { CreateOrderRequest } = require('./src/grpc/proto/point_of_sales_pb.js');
     const request = new CreateOrderRequest();
@@ -334,6 +335,7 @@ class PointOfSales {
     request.setPosuuid(posUuid);
     request.setCustomeruuid(customerUuid);
     request.setDocumenttypeuuid(documentTypeUuid);
+    request.setSalesrepresentativeuuid(salesRepresentativeUuid);
 
     return this.getService().createOrder(request)
       .then(createOrderResponse => {
