@@ -1,6 +1,7 @@
 /************************************************************************************
  * Copyright (C) 2012-2018 E.R.P. Consultores y Asociados, C.A.                     *
  * Contributor(s): Yamel Senih ysenih@erpya.com                                     *
+ * Contributor(s): Edwin Betancourt EdwinBetanc0urt@outlook.com                     *
  * This program is free software: you can redistribute it and/or modify             *
  * it under the terms of the GNU General Public License as published by             *
  * the Free Software Foundation, either version 2 of the License, or                *
@@ -19,6 +20,7 @@ option java_package = "org.spin.grpc.util";
 option java_outer_classname = "ADempiereBase";
 option objc_class_prefix = "HLW";
 
+// TODO: Change package to 'base_data', 'data_type' or 'base_data_type'
 package data;
 
 //  Empty message
